@@ -1,4 +1,4 @@
-package podcastengine
+package podcastengine.cli
 
 fun main(args: Array<String>) {
 
