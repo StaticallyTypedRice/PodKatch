@@ -1,4 +1,4 @@
-package podcastengine
+package podcastengine.cli
 
 fun main(args: Array<String>) {
 
@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     } while (url == "")
 
     // Ask for the download location
-    print("Download to (download):")
+    print("Download to (download): ")
     outputDir = readLine()!!
     if (outputDir == "") {
         outputDir = "download"
