@@ -10,7 +10,7 @@ class Podcast {
     var image: URL?             // The cover image
 }
 
-class PodcastEpisode {
+class Episode {
     var podcast: Podcast        // The podcast where the episode originates
 
     var guid: String?           // The episode GUID
