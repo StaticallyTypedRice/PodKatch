@@ -1,8 +1,6 @@
 import java.net.URL
 import java.util.Date
 
-package podcastengine
-
 class Podcast {
     var title: String           // The podcast title
     var rss: URL                // The podcast RSS URL
