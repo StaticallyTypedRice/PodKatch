@@ -19,5 +19,14 @@
 *.tar.gz
 *.rar
 
+# Other package files
+*.exe
+*.msi
+*.deb
+*.snap
+*.rpm
+*.app
+*.dmg
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
