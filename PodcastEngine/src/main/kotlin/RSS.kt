@@ -10,7 +10,7 @@ fun getRemoteRSS(url: URL) {
 }
 
 fun getLocalRSS(path: String): Document {
-    val RSSFile: InputStream = File(path)
+    val RSSFile: File = File(path)
     val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(RSSFile)
 
     RSSDocument.documentElement.normalize()
