@@ -1,4 +1,4 @@
-package podcastengine.cli
+package podkatch.cli
 
 fun main(args: Array<String>) {
 
