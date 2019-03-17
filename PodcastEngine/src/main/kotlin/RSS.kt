@@ -27,8 +27,8 @@ fun getLocalRSS(path: String): Document {
 fun createPodcastFromRSS(RSS: Document): Podcast {
     // Create a Podcast object from an RSS document
 
-    // Parse the podcast RSS
-    val channel: Element = RSS.getElementsByTagName("rss").item(0) as Element
+    // Get the RSS channel element
+    val channel: Element = RSS.getElementsByTagName("channel").item(0) as Element
 
     val podcast = Podcast()
 
