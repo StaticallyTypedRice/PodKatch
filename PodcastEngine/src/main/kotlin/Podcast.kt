@@ -2,8 +2,10 @@ package podcastengine.podcast
 
 import java.net.URL
 import java.util.Date
+import org.w3c.dom.Document
 
-class Podcast(title: String, rss: URL) {
+
+class Podcast(title: String, rss: Document) {
     var link: URL? = null               // The link to the podcast page
     var description: String? = null     // The podcast description
     var copyright: String? = null       // The copyright notice
@@ -12,7 +14,7 @@ class Podcast(title: String, rss: URL) {
     // All podcast episodes
     var episodes: Array<Episode> = arrayOf<Episode>()
 
-    fun createFromRSS(file: String) {
+    fun createFromRSS() {
         // Fill in the above data from an RSS file
         //TODO
     }
