@@ -6,6 +6,9 @@ import javax.xml.parsers.DocumentBuilderFactory
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.NodeList
+import java.time.LocalDate
+import java.time.Duration
+import java.time.format.DateTimeFormatter
 import podcastengine.podcast.*
 
 fun getRemoteRSS(url: URL) {
@@ -24,11 +27,12 @@ fun getLocalRSS(path: String): Document {
 fun createPodcastFromRSS(RSS: Document): Podcast {
     // Create a Podcast object from an RSS document
 
-    // Parse the podcast metadata
+    // Parse the podcast RSS
     val channel: Element = RSS.getElementsByTagName("rss").item(0) as Element
 
     val podcast = Podcast()
 
+    // Populate the podcast metadata
     podcast.title = channel.getElementsByTagName("title").item(0).textContent
     podcast.link = URL(channel.getElementsByTagName("link").item(0).textContent)
     podcast.description = channel.getElementsByTagName("description").item(0).textContent
@@ -47,7 +51,28 @@ fun createPodcastFromRSS(RSS: Document): Podcast {
     // Parse the podcast episodes
     val episodes: NodeList = RSS.getElementsByTagName("item")
     for (i in 0 until episodes.length) {
-         continue //TODO
+        val item: Element = episodes.item(i) as Element
+
+        val episode = Episode(URL(item.getElementsByTagName("enclousre").item(0).attributes.getNamedItem("url").textContent))
+
+        // Populate the episode metadata
+        episode.guid = item.getElementsByTagName("guid").item(0).textContent
+        episode.description = item.getElementsByTagName("description").item(0).textContent
+        episode.pubDate = LocalDate.parse(item.getElementsByTagName("pubDate").item(0).textContent, DateTimeFormatter.ISO_DATE)
+        episode.duration = Duration.parse(item.getElementsByTagName("itunes:duration").item(0).textContent)
+        episode.episodeType = item.getElementsByTagName("itunes:episodeType").item(0).textContent
+
+        when(item.getElementsByTagName("itunes:author").item(0).textContent) {
+            "yes" -> episode.itunesExplicit = true
+            "no" -> episode.itunesExplicit = false
+        }
+
+        episode.fileLength = item.getElementsByTagName("enclousre").item(0).attributes.getNamedItem("length").textContent.toLong()
+        episode.fileType = item.getElementsByTagName("enclousre").item(0).attributes.getNamedItem("type").textContent
+
+        // Append the episode to the podcast episode list
+        podcast.episodes += episode
+
     }
 
     return podcast
