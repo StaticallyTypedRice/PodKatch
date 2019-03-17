@@ -4,6 +4,17 @@ import java.lang.NumberFormatException
 
 fun main(args: Array<String>) {
 
+    println()
+    println(" ############### PodKatch CLI ###############")
+    println(" #                                          #")
+    println(" # Created by Richie Zhang                  #")
+    println(" # Version 0.1                              #")
+    println(" #                                          #")
+    println(" # Downloads all podcasts in an RSS file.   #")
+    println(" #                                          #")
+    println(" ############################################")
+    println()
+
     var location: String
     var outputDir: String
     var remoteRSS: Boolean
