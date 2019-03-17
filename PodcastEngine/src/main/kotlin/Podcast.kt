@@ -11,11 +11,8 @@ class Podcast {
     var copyright: String?      // The copyright notice
     var image: URL?             // The cover image
 
+    // All podcast episodes
     var episodes: Array<Episode>
-        get() = field
-        set(value) {
-            field = value
-        }
 
     fun createFromRSS(file: String) {
         // Fill in the above data from an RSS file
@@ -26,8 +23,8 @@ class Podcast {
 class Episode {
     var guid: String?           // The episode GUID
     var description: String?    // The episode description
-    var pubDate: Date?          // The epidode publication date
-    var duration: String?       // The epidode duration (TODO: Use a dedicated data type)
+    var pubDate: Date?          // The episode publication date
+    var duration: String?       // The episode duration (TODO: Use a dedicated data type)
 
     var file: URL               // The episode file URL
     var fileLength:Long?        // The episode file length
