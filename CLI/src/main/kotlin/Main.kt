@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
     // Ask if the RSS file is remote or local
     do {
         println("Is the RSS file remote or local?")
-        println("1: Remote (default)    2: Local\n")
+        println("1: Remote (default)    2: Local")
         remoteRSSInput = readLine()
 
         if ((remoteRSSInput == "1") || (remoteRSSInput == "")) {
