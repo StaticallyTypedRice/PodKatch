@@ -46,6 +46,7 @@ class Episode(_title: String, _file: URL) {
 
     fun download(outputDir: String) {
         // Download the episode
-        //TODO
+
+        println("TODO: Download '${title}' to '$outputDir'.")
     }
 }
