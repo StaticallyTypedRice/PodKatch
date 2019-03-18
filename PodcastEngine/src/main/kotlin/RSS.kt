@@ -91,7 +91,10 @@ fun createPodcastFromRSS(RSS: Document): Podcast {
     for (i in 0 until episodes.length) {
         val item: Element = episodes.item(i) as Element
 
-        val episode = Episode(URL(item.getElementsByTagName("enclousre").item(0).attributes.getNamedItem("url").textContent))
+        val title: String = item.getElementsByTagName("guid").item(0).textContent
+        val file = URL(item.getElementsByTagName("enclousre").item(0).attributes.getNamedItem("url").textContent)
+
+        val episode = Episode(title, file)
 
         // Populate the episode metadata
         episode.guid = item.getElementsByTagName("guid").item(0).textContent
