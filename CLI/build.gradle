@@ -12,16 +12,17 @@ repositories {
     maven {
         url 'https://dl.bintray.com/kittinunf/maven/'
     }
-    flatDir {
+    /*flatDir {
         dirs '../PodcastEngine/build/libs'
-    }
+    }*/
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile 'com.github.kittinunf.fuel:fuel:2.0.1'
     compile 'com.github.kittinunf.fuel:fuel-coroutines:2.0.1'
-    compile name: 'PodcastEngine-1.0-SNAPSHOT'
+    //compile name: 'PodcastEngine-1.0-SNAPSHOT'
+    compile project(':PodcastEngine')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
