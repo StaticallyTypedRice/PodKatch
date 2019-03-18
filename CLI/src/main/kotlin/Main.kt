@@ -3,6 +3,7 @@ package podkatch.cli
 import kotlin.coroutines.Continuation
 import java.net.URL
 import org.w3c.dom.Document
+import com.github.kittinunf.fuel.core.Request
 
 import podcastengine.rss.*
 
@@ -59,18 +60,24 @@ fun main(args: Array<String>) {
         outputDir = "download"
     }
 
-    startDownload(remoteRSS, location, outputDir)
-}
 
-fun startDownload(remote: Boolean, location: String, directory: String) {
-    if (remote) {
-        getRemoteRSS(URL(location))
+    if (remoteRSS) {
+        val request: Request = getRemoteRSS(URL(location))
+
+        request.response { request, response, result ->
+            val (bytes, error) = result
+
+            val RSSFile: Document = parseRSS(bytes)
+
+            download(RSSFile, outputDir)
+        }
 
     } else {
-        val rssFile: Document = getLocalRSS(location)
+        val RSSFile: Document = parseRSS(getLocalRSS(location))
+        download(RSSFile, outputDir)
     }
 }
 
-fun download(RSS: Document) {
+fun download(RSS: Document, downloadTo: String) {
 
 }
