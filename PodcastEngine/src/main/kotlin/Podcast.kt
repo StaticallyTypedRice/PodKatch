@@ -25,7 +25,10 @@ class Podcast {
     var episodes: Array<Episode> = arrayOf()
 }
 
-class Episode(title: String, file: URL) {
+class Episode(_title: String, _file: URL) {
+    val title: String = _title      // The episode title
+    val file: URL = _file           // The episode file location
+
     var guid: String? = null        // The episode GUID
     var description: String? = null // The episode description
     var pubDate: LocalDate? = null  // The episode publication date
