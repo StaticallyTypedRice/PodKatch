@@ -1,18 +1,39 @@
 package podcastengine.rss
 
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 import java.net.URL
 import java.io.File
+import java.time.LocalDate
+import java.time.Duration
+import java.time.format.DateTimeFormatter
 import javax.xml.parsers.DocumentBuilderFactory
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.NodeList
-import java.time.LocalDate
-import java.time.Duration
-import java.time.format.DateTimeFormatter
+import com.github.kittinunf.fuel.Fuel
+
 import podcastengine.podcast.*
 
-fun getRemoteRSS(url: URL) {
-    //TODO
+fun getRemoteRSS(url: URL, callback: Continuation<Document>) {
+    Fuel.get(url.toString())
+        .response { request, response, result ->
+            val (bytes, error) = result
+
+            val rssString: String
+
+            when (bytes) {
+                null -> rssString = ""
+                else -> rssString = String(bytes)
+            }
+
+            val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rssString)
+
+            RSSDocument.documentElement.normalize()
+
+            callback.resume(RSSDocument)
+        }
 }
 
 fun getLocalRSS(path: String): Document {
