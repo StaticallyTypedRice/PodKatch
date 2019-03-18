@@ -9,10 +9,14 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs '../PodcastEngine/build/libs'
+    }
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile name: 'PodcastEngine-1.0-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
