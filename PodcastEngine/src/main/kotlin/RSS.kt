@@ -13,32 +13,49 @@ import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.NodeList
 import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.Request
 
 import podcastengine.podcast.*
 
-fun getRemoteRSS(url: URL, callback: Continuation<Document>) {
-    Fuel.get(url.toString())
-        .response { request, response, result ->
-            val (bytes, error) = result
+fun getRemoteRSS(url: URL): Request {
 
-            val rssString: String
+    // Use request.response { request, response, result -> parseRSS(response) } to parse the data.
 
-            when (bytes) {
-                null -> rssString = ""
-                else -> rssString = String(bytes)
-            }
+    val request: Request = Fuel.get(url.toString())
 
-            val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rssString)
+    return request
 
-            RSSDocument.documentElement.normalize()
-
-            callback.resume(RSSDocument)
-        }
 }
 
-fun getLocalRSS(path: String): Document {
-    val RSSFile: File = File(path)
-    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(RSSFile)
+fun getLocalRSS(path: String): File {
+    val RSSFile = File(path)
+
+    return RSSFile
+}
+
+fun parseRSS(rss: String): Document {
+    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rss)
+
+    RSSDocument.documentElement.normalize()
+
+    return RSSDocument
+}
+fun parseRSS(rss: ByteArray?): Document {
+    val rssString: String
+
+    when (rss) {
+        null -> rssString = ""
+        else -> rssString = String(rss)
+    }
+
+    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rssString)
+
+    RSSDocument.documentElement.normalize()
+
+    return RSSDocument
+}
+fun parseRSS(rss: File): Document {
+    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rss)
 
     RSSDocument.documentElement.normalize()
 
