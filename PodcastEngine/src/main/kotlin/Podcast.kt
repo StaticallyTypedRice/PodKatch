@@ -29,7 +29,7 @@ class Episode(file: URL) {
     var guid: String? = null        // The episode GUID
     var description: String? = null // The episode description
     var pubDate: LocalDate? = null  // The episode publication date
-    var duration: Duration? = null  // The episode duration (TODO: Use a dedicated data type)
+    var duration: Duration? = null  // The episode duration
     var episodeType: String? = null // The episode type (based on iTunes' episode types)
 
     // Whether the podcast is set as explicit for iTunes
