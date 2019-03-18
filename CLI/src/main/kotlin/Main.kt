@@ -1,6 +1,10 @@
 package podkatch.cli
 
-import java.lang.NumberFormatException
+import kotlin.coroutines.Continuation
+import java.net.URL
+import org.w3c.dom.Document
+
+import podcastengine.rss.*
 
 fun main(args: Array<String>) {
 
@@ -17,7 +21,7 @@ fun main(args: Array<String>) {
 
     var location: String
     var outputDir: String
-    var remoteRSS: Boolean
+    var remoteRSS: Boolean = false
     var remoteRSSInput: String?
 
     // Ask if the RSS file is remote or local
@@ -55,5 +59,18 @@ fun main(args: Array<String>) {
         outputDir = "download"
     }
 
-    println("TODO: Download podcasts from $location to $outputDir")
+    startDownload(remoteRSS, location, outputDir)
+}
+
+fun startDownload(remote: Boolean, location: String, directory: String) {
+    if (remote) {
+        getRemoteRSS(URL(location))
+
+    } else {
+        val rssFile: Document = getLocalRSS(location)
+    }
+}
+
+fun download(RSS: Document) {
+
 }
