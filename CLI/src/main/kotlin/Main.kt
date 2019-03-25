@@ -1,6 +1,5 @@
 package podkatch.cli
 
-import kotlin.coroutines.Continuation
 import java.net.URL
 import java.io.FileNotFoundException
 import org.w3c.dom.Document
@@ -77,9 +76,9 @@ fun main(args: Array<String>) {
 
         do {
             try {
-                val RSSFile = parseRSS(getLocalRSS(location))
+                val rssFile = parseRSS(getLocalRSS(location))
                 fileValid = true
-                download(RSSFile, outputDir)
+                download(rssFile, outputDir)
             } catch (e: FileNotFoundException) {
                 println("Error: ${e.message}")
                 println()
