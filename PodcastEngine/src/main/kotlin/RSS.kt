@@ -92,7 +92,7 @@ fun createPodcastFromRSS(RSS: Document): Podcast {
         val item: Element = episodes.item(i) as Element
 
         val title: String = item.getElementsByTagName("guid").item(0).textContent
-        val file = URL(item.getElementsByTagName("enclousre").item(0).attributes.getNamedItem("url").textContent)
+        val file = URL(item.getElementsByTagName("enclosure").item(0).attributes.getNamedItem("url").textContent)
 
         val episode = Episode(title, file)
 
@@ -108,8 +108,8 @@ fun createPodcastFromRSS(RSS: Document): Podcast {
             "no" -> episode.itunesExplicit = false
         }
 
-        episode.fileLength = item.getElementsByTagName("enclousre").item(0).attributes.getNamedItem("length").textContent.toLong()
-        episode.fileType = item.getElementsByTagName("enclousre").item(0).attributes.getNamedItem("type").textContent
+        episode.fileLength = item.getElementsByTagName("enclosure").item(0).attributes.getNamedItem("length").textContent.toLong()
+        episode.fileType = item.getElementsByTagName("enclosure").item(0).attributes.getNamedItem("type").textContent
 
         // Append the episode to the podcast episode list
         podcast.episodes += episode
