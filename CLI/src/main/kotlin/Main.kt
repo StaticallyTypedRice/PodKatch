@@ -2,6 +2,7 @@ package podkatch.cli
 
 import kotlin.coroutines.Continuation
 import java.net.URL
+import java.io.FileNotFoundException
 import org.w3c.dom.Document
 import com.github.kittinunf.fuel.core.Request
 
@@ -60,7 +61,6 @@ fun main(args: Array<String>) {
         outputDir = "download"
     }
 
-
     if (remoteRSS) {
         val request: Request = getRemoteRSS(URL(location))
 
@@ -73,11 +73,34 @@ fun main(args: Array<String>) {
         }
 
     } else {
-        val RSSFile: Document = parseRSS(getLocalRSS(location))
-        download(RSSFile, outputDir)
+        var fileValid = false
+
+        do {
+            try {
+                val RSSFile = parseRSS(getLocalRSS(location))
+                fileValid = true
+                download(RSSFile, outputDir)
+            } catch (e: FileNotFoundException) {
+                println("Error: ${e.message}")
+                println()
+
+                // Ask for the location again
+                location = ""
+                do {
+                    print("Podcast RSS: ")
+                    location = readLine()!!
+                } while (location == "")
+            }
+        } while (!fileValid)
+
     }
+
 }
 
 fun download(RSS: Document, downloadTo: String) {
+    val podcast = createPodcastFromRSS(RSS)
 
+    for (episode in podcast.episodes) {
+        episode.download(downloadTo)
+    }
 }
