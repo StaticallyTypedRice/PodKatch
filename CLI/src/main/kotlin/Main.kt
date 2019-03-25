@@ -66,9 +66,9 @@ fun main(args: Array<String>) {
         request.response { request, response, result ->
             val (bytes, error) = result
 
-            val RSSFile: Document = parseRSS(bytes)
+            val rssFile: Document = parseRSS(bytes)
 
-            download(RSSFile, outputDir)
+            download(rssFile, outputDir)
         }
 
     } else {
