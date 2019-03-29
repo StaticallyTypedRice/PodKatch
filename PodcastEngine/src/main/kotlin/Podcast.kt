@@ -3,6 +3,7 @@ package podcastengine.podcast
 import java.net.URL
 import java.time.LocalDate
 import java.time.Duration
+import java.util.Date
 
 class Podcast {
     var title: String? = null           // The podcast title
@@ -31,7 +32,7 @@ class Episode(_title: String, _file: URL) {
 
     var guid: String? = null        // The episode GUID
     var description: String? = null // The episode description
-    var pubDate: LocalDate? = null  // The episode publication date
+    var pubDate: Date? = null       // The episode publication date
     var duration: Duration? = null  // The episode duration
     var episodeType: String? = null // The episode type (based on iTunes' episode types)
 

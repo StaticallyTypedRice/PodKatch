@@ -6,6 +6,7 @@ import kotlin.coroutines.resumeWithException
 import java.net.URL
 import java.io.File
 import java.time.LocalDate
+import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.format.DateTimeFormatter
 import javax.xml.parsers.DocumentBuilderFactory
@@ -16,6 +17,7 @@ import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.Request
 
 import podcastengine.podcast.*
+import java.util.*
 
 fun getRemoteRSS(url: URL): Request {
 
@@ -99,7 +101,8 @@ fun createPodcastFromRSS(RSS: Document): Podcast {
         // Populate the episode metadata
         episode.guid = item.getElementsByTagName("guid").item(0).textContent
         episode.description = item.getElementsByTagName("description").item(0).textContent
-        episode.pubDate = LocalDate.parse(item.getElementsByTagName("pubDate").item(0).textContent, DateTimeFormatter.ISO_DATE)
+        episode.pubDate = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.ENGLISH)
+                .parse(item.getElementsByTagName("pubDate").item(0).textContent)
         episode.duration = Duration.parse(item.getElementsByTagName("itunes:duration").item(0).textContent)
         episode.episodeType = item.getElementsByTagName("itunes:episodeType").item(0).textContent
 
