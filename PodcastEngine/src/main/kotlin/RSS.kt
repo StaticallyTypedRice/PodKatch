@@ -93,9 +93,11 @@ fun createPodcastFromRss(rss: Document): Podcast {
     podcast.author = channel.getElementsByTagName("itunes:author").item(0).textContent
     podcast.category = channel.getElementsByTagName("itunes:category").item(0).attributes.getNamedItem("text").textContent
 
-    when(channel.getElementsByTagName("itunes:author").item(0).textContent) {
+    when(channel.getElementsByTagName("itunes:explicit").item(0).textContent) {
         "yes" -> podcast.itunesExplicit = true
         "no" -> podcast.itunesExplicit = false
+        null -> podcast.itunesExplicit = false
+        else -> podcast.itunesExplicit = false
     }
 
     podcast.language = channel.getElementsByTagName("language").item(0).textContent
@@ -119,9 +121,11 @@ fun createPodcastFromRss(rss: Document): Podcast {
         episode.duration = parseDurationFromColonSeparatedTime(item.getElementsByTagName("itunes:duration").item(0).textContent)
         episode.episodeType = item.getElementsByTagName("itunes:episodeType").item(0).textContent
 
-        when(item.getElementsByTagName("itunes:author").item(0).textContent) {
+        when(item.getElementsByTagName("itunes:explicit").item(0).textContent) {
             "yes" -> episode.itunesExplicit = true
             "no" -> episode.itunesExplicit = false
+            null -> episode.itunesExplicit = false
+            else -> episode.itunesExplicit = false
         }
 
         episode.fileLength = item.getElementsByTagName("enclosure").item(0).attributes.getNamedItem("length").textContent.toLong()
