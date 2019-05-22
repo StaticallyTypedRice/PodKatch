@@ -5,11 +5,13 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import java.net.URL
 import java.io.File
+import java.io.StringReader
 import java.time.LocalDate
 import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.format.DateTimeFormatter
 import javax.xml.parsers.DocumentBuilderFactory
+import org.xml.sax.InputSource
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.NodeList
@@ -36,7 +38,8 @@ fun getLocalRSS(path: String): File {
 }
 
 fun parseRSS(rss: String): Document {
-    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rss)
+    val RSSString = InputSource(StringReader(rss))
+    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(RSSString)
 
     RSSDocument.documentElement.normalize()
 
