@@ -1,4 +1,4 @@
 rootProject.name = 'PodKatch'
-include 'Podcast'
+include 'PodcastEngine'
 include 'CLI'
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+  <channel>
+    <itunes:type>episodic</itunes:type>
+    <language>en-us</language>
+    <title>Podcast Title</title>
+    <link>https://example.com/podcast</link>
+    <description>Podcast Description</description>
+    <copyright>Copyright © 2019 Podcast Author</copyright>
+    <itunes:category text="Comedy" />
+    <itunes:author>Podcast Author</itunes:author>
+    <itunes:image href="https://example.com/podcast-thumbnail.jpg"/>
+    <itunes:explicit>No</itunes:explicit>
+    <item>
+      <guid>1-1-1-1-1</guid>
+      <title>Episode 1</title>
+      <description>Episode 1 Description</description>
+      <pubDate>Thu, 14 Mar 2019 12:00:00 EDT</pubDate>
+      <itunes:duration>01:30:01</itunes:duration>
+      <itunes:explicit>No</itunes:explicit>
+      <enclosure url="https://example.com/episode1.mp3" length="100000000"
+        type="audio/mpeg" />
+      <itunes:episodeType>full</itunes:episodeType>
+    </item>
+    <item>
+      <guid>2-2-2-2-2</guid>
+      <title>Episode 2</title>
+      <description>Episode 2 Description</description>
+      <pubDate>Wed, 15 Mar 2019 12:00:00 EST</pubDate>
+      <itunes:duration>01:30:02</itunes:duration>
+      <itunes:explicit>No</itunes:explicit>
+      <enclosure url="https://example.com/episode2.mp3" length="100000000"
+        type="audio/mpeg" />
+      <itunes:episodeType>full</itunes:episodeType>
+    </item>
+  </channel>
+</rss>
