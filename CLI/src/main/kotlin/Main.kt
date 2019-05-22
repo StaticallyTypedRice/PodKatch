@@ -2,6 +2,7 @@ package podkatch.cli
 
 import java.net.URL
 import java.io.FileNotFoundException
+import java.net.MalformedURLException
 import org.w3c.dom.Document
 import com.github.kittinunf.fuel.core.Request
 
@@ -61,12 +62,30 @@ fun main(args: Array<String>) {
     }
 
     if (remoteRss) {
-        val request: Request = getRemoteRss(URL(location))
-        val (rssRequest, rssResponse, rssRresult) = request.response()
-        val (rssBytes, rssError) = rssRresult
-        val rssFile: Document = parseRss(rssBytes)
+        var onlineRssValid = true
 
-        download(rssFile, outputDir)
+        do {
+            try {
+                val request: Request = getRemoteRss(URL(location))
+
+
+                val (rssRequest, rssResponse, rssRresult) = request.response()
+                val (rssBytes, rssError) = rssRresult
+                val rssFile: Document = parseRss(rssBytes)
+
+                download(rssFile, outputDir)
+            } catch (e: MalformedURLException) {
+                onlineRssValid = false
+                println("Error: URL invalid (${e.message})")
+
+                // Ask for the location again
+                location = ""
+                do {
+                    print("Podcast RSS: ")
+                    location = readLine()!!
+                } while (location == "")
+            }
+        } while (!onlineRssValid)
 
     } else {
         var fileValid = false
