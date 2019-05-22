@@ -63,6 +63,20 @@ fun parseRss(rss: File): Document {
     return rssDocument
 }
 
+fun parseDurationFromColonSeparatedTime(time: String): Duration {
+    // Parse a string in the format HH:MM:SS to a Duration object
+
+    val duration = Duration.ZERO
+
+    val timeList = time.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+
+    duration.plusHours(timeList[0].toLong())
+    duration.plusMinutes(timeList[1].toLong())
+    duration.plusSeconds(timeList[2].toLong())
+
+    return duration
+}
+
 fun createPodcastFromRss(rss: Document): Podcast {
     // Create a Podcast object from an rss document
 
@@ -102,7 +116,7 @@ fun createPodcastFromRss(rss: Document): Podcast {
         episode.description = item.getElementsByTagName("description").item(0).textContent
         episode.pubDate = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.ENGLISH)
                 .parse(item.getElementsByTagName("pubDate").item(0).textContent)
-        episode.duration = Duration.parse(item.getElementsByTagName("itunes:duration").item(0).textContent)
+        episode.duration = parseDurationFromColonSeparatedTime(item.getElementsByTagName("itunes:duration").item(0).textContent)
         episode.episodeType = item.getElementsByTagName("itunes:episodeType").item(0).textContent
 
         when(item.getElementsByTagName("itunes:author").item(0).textContent) {
