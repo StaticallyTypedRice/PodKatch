@@ -22,30 +22,30 @@ fun main(args: Array<String>) {
 
     var location: String
     var outputDir: String
-    var remoteRSS: Boolean = false
-    var remoteRSSInput: String?
+    var remoteRss: Boolean = false
+    var remoteRssInput: String?
 
     // Ask if the RSS file is remote or local
     do {
         println("Is the RSS file remote or local?")
         println("1: Remote (default)    2: Local")
-        remoteRSSInput = readLine()
+        remoteRssInput = readLine()
 
-        if ((remoteRSSInput == "1") || (remoteRSSInput == "")) {
-            remoteRSS = true
-        } else if (remoteRSSInput == "2") {
-            remoteRSS = false
+        if ((remoteRssInput == "1") || (remoteRssInput == "")) {
+            remoteRss = true
+        } else if (remoteRssInput == "2") {
+            remoteRss = false
         } else {
             println()
             println("Invalid input. Please enter '1', '2', or a blank line.")
         }
 
         // If the input is a blank line, there is no need to print another one.
-        if (remoteRSSInput != "") {
+        if (remoteRssInput != "") {
             println()
         }
 
-    } while ((remoteRSSInput != "") && (remoteRSSInput != "1") && (remoteRSSInput != "2"))
+    } while ((remoteRssInput != "") && (remoteRssInput != "1") && (remoteRssInput != "2"))
 
     // Ask for the RSS location
     do {
@@ -60,16 +60,13 @@ fun main(args: Array<String>) {
         outputDir = "download"
     }
 
-    if (remoteRSS) {
+    if (remoteRss) {
         val request: Request = getRemoteRss(URL(location))
+        val (rssRequest, rssResponse, rssRresult) = request.response()
+        val (rssBytes, rssError) = rssRresult
+        val rssFile: Document = parseRss(rssBytes)
 
-        request.response { request, response, result ->
-            val (bytes, error) = result
-
-            val rssFile: Document = parseRss(bytes)
-
-            download(rssFile, outputDir)
-        }
+        download(rssFile, outputDir)
 
     } else {
         var fileValid = false
