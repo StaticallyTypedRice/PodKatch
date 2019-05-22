@@ -53,7 +53,8 @@ fun parseRSS(rss: ByteArray?): Document {
         else -> rssString = String(rss)
     }
 
-    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rssString)
+    val RSSInput = InputSource(StringReader(rssString))
+    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(RSSInput)
 
     RSSDocument.documentElement.normalize()
 
