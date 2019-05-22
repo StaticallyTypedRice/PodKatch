@@ -61,12 +61,12 @@ fun main(args: Array<String>) {
     }
 
     if (remoteRSS) {
-        val request: Request = getRemoteRSS(URL(location))
+        val request: Request = getRemoteRss(URL(location))
 
         request.response { request, response, result ->
             val (bytes, error) = result
 
-            val rssFile: Document = parseRSS(bytes)
+            val rssFile: Document = parseRss(bytes)
 
             download(rssFile, outputDir)
         }
@@ -76,7 +76,7 @@ fun main(args: Array<String>) {
 
         do {
             try {
-                val rssFile = parseRSS(getLocalRSS(location))
+                val rssFile = parseRss(getLocalRss(location))
                 fileValid = true
                 download(rssFile, outputDir)
             } catch (e: FileNotFoundException) {
@@ -97,7 +97,7 @@ fun main(args: Array<String>) {
 }
 
 fun download(RSS: Document, downloadTo: String) {
-    val podcast = createPodcastFromRSS(RSS)
+    val podcast = createPodcastFromRss(RSS)
 
     for (episode in podcast.episodes) {
         episode.download(downloadTo)
