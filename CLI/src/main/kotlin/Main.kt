@@ -88,14 +88,14 @@ fun main(args: Array<String>) {
         } while (!onlineRssValid)
 
     } else {
-        var fileValid = false
+        var fileValid = true
 
         do {
             try {
                 val rssFile = parseRss(getLocalRss(location))
-                fileValid = true
                 download(rssFile, outputDir)
             } catch (e: FileNotFoundException) {
+                fileValid = false
                 println("Error: ${e.message}")
                 println()
 
