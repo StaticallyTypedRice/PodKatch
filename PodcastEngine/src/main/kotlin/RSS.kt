@@ -1,15 +1,10 @@
 package podcastengine.rss
 
-import kotlin.coroutines.Continuation
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
 import java.net.URL
 import java.io.File
 import java.io.StringReader
-import java.time.LocalDate
 import java.text.SimpleDateFormat
 import java.time.Duration
-import java.time.format.DateTimeFormatter
 import javax.xml.parsers.DocumentBuilderFactory
 import org.xml.sax.InputSource
 import org.w3c.dom.Document
@@ -21,9 +16,9 @@ import com.github.kittinunf.fuel.core.Request
 import podcastengine.podcast.*
 import java.util.*
 
-fun getRemoteRSS(url: URL): Request {
+fun getRemoteRss(url: URL): Request {
 
-    // Use request.response { request, response, result -> parseRSS(response) } to parse the data.
+    // Use request.response { request, response, result -> parseRss(response) } to parse the data.
 
     val request: Request = Fuel.get(url.toString())
 
@@ -31,21 +26,21 @@ fun getRemoteRSS(url: URL): Request {
 
 }
 
-fun getLocalRSS(path: String): File {
-    val RSSFile = File(path)
+fun getLocalRss(path: String): File {
+    val rssFile = File(path)
 
-    return RSSFile
+    return rssFile
 }
 
-fun parseRSS(rss: String): Document {
-    val RSSString = InputSource(StringReader(rss))
-    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(RSSString)
+fun parseRss(rss: String): Document {
+    val rssInput = InputSource(StringReader(rss))
+    val rssDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rssInput)
 
-    RSSDocument.documentElement.normalize()
+    rssDocument.documentElement.normalize()
 
-    return RSSDocument
+    return rssDocument
 }
-fun parseRSS(rss: ByteArray?): Document {
+fun parseRss(rss: ByteArray?): Document {
     val rssString: String
 
     when (rss) {
@@ -53,25 +48,26 @@ fun parseRSS(rss: ByteArray?): Document {
         else -> rssString = String(rss)
     }
 
-    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rssString)
+    val rssInput = InputSource(StringReader(rssString))
+    val rssDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rssInput)
 
-    RSSDocument.documentElement.normalize()
+    rssDocument.documentElement.normalize()
 
-    return RSSDocument
+    return rssDocument
 }
-fun parseRSS(rss: File): Document {
-    val RSSDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rss)
+fun parseRss(rss: File): Document {
+    val rssDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rss)
 
-    RSSDocument.documentElement.normalize()
+    rssDocument.documentElement.normalize()
 
-    return RSSDocument
+    return rssDocument
 }
 
-fun createPodcastFromRSS(RSS: Document): Podcast {
-    // Create a Podcast object from an RSS document
+fun createPodcastFromRss(rss: Document): Podcast {
+    // Create a Podcast object from an rss document
 
-    // Get the RSS channel element
-    val channel: Element = RSS.getElementsByTagName("channel").item(0) as Element
+    // Get the rss channel element
+    val channel: Element = rss.getElementsByTagName("channel").item(0) as Element
 
     val podcast = Podcast()
 
@@ -92,7 +88,7 @@ fun createPodcastFromRSS(RSS: Document): Podcast {
     podcast.copyright = channel.getElementsByTagName("copyright").item(0).textContent
 
     // Parse the podcast episodes
-    val episodes: NodeList = RSS.getElementsByTagName("item")
+    val episodes: NodeList = rss.getElementsByTagName("item")
     for (i in 0 until episodes.length) {
         val item: Element = episodes.item(i) as Element
 
