@@ -62,12 +62,13 @@ fun main(args: Array<String>) {
     }
 
     if (remoteRss) {
-        var onlineRssValid = true
+        var onlineRssValid: Boolean
 
         do {
             try {
+                onlineRssValid = true
                 val request: Request = getRemoteRss(URL(location))
-
+                println("Downloading RSS file...")
 
                 val (rssRequest, rssResponse, rssRresult) = request.response()
                 val (rssBytes, rssError) = rssRresult
@@ -88,10 +89,11 @@ fun main(args: Array<String>) {
         } while (!onlineRssValid)
 
     } else {
-        var fileValid = true
+        var fileValid: Boolean
 
         do {
             try {
+                fileValid = true
                 val rssFile = parseRss(getLocalRss(location))
                 download(rssFile, outputDir)
             } catch (e: FileNotFoundException) {
