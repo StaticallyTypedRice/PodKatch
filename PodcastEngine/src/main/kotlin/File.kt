@@ -18,10 +18,9 @@ class FileName(_name: String, _noExtraSpaces: Boolean = true) {
         )
     }
 
-    val noExtraSpaces = _noExtraSpaces
-
-    // Automatically parse the filename when initializing the object
-    val name = parse(_name)
+    val noExtraSpaces = _noExtraSpaces  // Whether to remove extra spaces when parsing the file name
+    val name = parse(_name)             // Automatically parse the filename when initializing the object
+    val extension = name.split(".").dropLastWhile { it.isEmpty() }.last()   // The file extension
 
     /**
      * Removes invalid file name characters.
