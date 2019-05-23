@@ -8,14 +8,14 @@ import podcastengine.file.*
 class ParsingTest {
     @Test
     fun `Test URL to FileName parsing`() {
-        assertEquals("", parseFilenameFromUrl(URL("https://example.com")))
-        assertEquals("", parseFilenameFromUrl(URL("https://example.com/")))
-        assertEquals("file", parseFilenameFromUrl(URL("https://example.com/file")))
-        assertEquals("file", parseFilenameFromUrl(URL("https://example.com/file/")))
-        assertEquals("file.txt", parseFilenameFromUrl(URL("https://example.com/file.txt")))
-        assertEquals("file.txt", parseFilenameFromUrl(URL("https://example.com/folder/file.txt")))
-        assertEquals("file.txt", parseFilenameFromUrl(URL("https://example.com/folder/file.txt?a=1&b=2")))
-        assertEquals("file.txt", parseFilenameFromUrl(URL("https://example.com/folder/file.txt?a=1&b=2#c")))
+        assertEquals(FileName(""), parseFilenameFromUrl(URL("https://example.com")))
+        assertEquals(FileName(""), parseFilenameFromUrl(URL("https://example.com/")))
+        assertEquals(FileName("file"), parseFilenameFromUrl(URL("https://example.com/file")))
+        assertEquals(FileName("file"), parseFilenameFromUrl(URL("https://example.com/file/")))
+        assertEquals(FileName("file.txt"), parseFilenameFromUrl(URL("https://example.com/file.txt")))
+        assertEquals(FileName("file.txt"), parseFilenameFromUrl(URL("https://example.com/folder/file.txt")))
+        assertEquals(FileName("file.txt"), parseFilenameFromUrl(URL("https://example.com/folder/file.txt?a=1&b=2")))
+        assertEquals(FileName("file.txt"), parseFilenameFromUrl(URL("https://example.com/folder/file.txt?a=1&b=2#c")))
     }
 }
 
