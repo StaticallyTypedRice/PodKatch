@@ -4,6 +4,8 @@ import java.net.URL
 import java.time.Duration
 import java.util.Date
 
+import podcastengine.file.FileName
+
 class Podcast {
     var title: String? = null           // The podcast title
     var link: URL? = null               // The link to the podcast page

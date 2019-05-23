@@ -1,5 +1,7 @@
 package podcastengine.file
 
+import java.net.URL
+
 class FileName(_name: String, _noExtraSpaces: Boolean = true) {
 
     companion object {
@@ -68,4 +70,17 @@ class FileName(_name: String, _noExtraSpaces: Boolean = true) {
 
     }
 
+}
+
+/**
+ * Parses the file name from a URL.
+ *  - Gets the final item in a slash character seperated URL.
+ *  - Removes query strings.
+ *
+ * Assumes that the URL will be structured as a standard file path.
+ *
+ * @param url The URL to parse.
+ */
+fun parseFilenameFromUrl(url: URL): FileName {
+    return FileName(url.path.split("/").dropLastWhile { it.isEmpty() }.last())
 }
