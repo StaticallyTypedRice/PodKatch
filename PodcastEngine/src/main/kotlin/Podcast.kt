@@ -1,7 +1,6 @@
 package podcastengine.podcast
 
 import java.net.URL
-import java.time.LocalDate
 import java.time.Duration
 import java.util.Date
 
@@ -26,9 +25,9 @@ class Podcast {
     var episodes: Array<Episode> = arrayOf()
 }
 
-class Episode(_title: String, _file: URL) {
+class Episode(_title: String, _url: URL) {
     val title: String = _title      // The episode title
-    val file: URL = _file           // The episode file location
+    val url: URL = _url             // The episode url
 
     var guid: String? = null        // The episode GUID
     var description: String? = null // The episode description
