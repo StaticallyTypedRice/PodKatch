@@ -19,8 +19,9 @@ class FileName(_name: String, _noExtraSpaces: Boolean = true) {
         )
     }
 
-    val noExtraSpaces = _noExtraSpaces  // Whether to remove extra spaces when parsing the file name
-    val name = parse(_name)             // Automatically parse the filename when initializing the object
+    val noExtraSpaces = _noExtraSpaces      // Whether to remove extra spaces when parsing the file name
+    val name = parse(_name)                 // Automatically parse the filename when initializing the object
+    val extension = parseExtension(name)    // The file extension
 
     /**
      * Removes invalid file name characters.
@@ -67,6 +68,27 @@ class FileName(_name: String, _noExtraSpaces: Boolean = true) {
 
         return newName
 
+    }
+
+    /**
+     * Parse the file extension.
+     *
+     * @param name The string to be parsed.
+     */
+    fun parseExtension(name: String): String {
+        var nameList: List<String>
+        try {
+            nameList = name.split(".").dropLastWhile { it.isEmpty() }
+
+            if (nameList.lastIndex == 0) {
+                // The file name does not contain dots and therefore has no extension
+                return ""
+            } else {
+                return nameList.last()
+            }
+        } catch (e: NoSuchElementException) {
+            return ""
+        }
     }
 
 }
