@@ -108,7 +108,7 @@ fun createPodcastFromRss(rss: Document): Podcast {
     for (i in 0 until episodes.length) {
         val item: Element = episodes.item(i) as Element
 
-        val title: String = item.getElementsByTagName("guid").item(0).textContent
+        val title: String = item.getElementsByTagName("title").item(0).textContent
         val file = URL(item.getElementsByTagName("enclosure").item(0).attributes.getNamedItem("url").textContent)
 
         val episode = Episode(title, file)
