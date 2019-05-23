@@ -103,11 +103,9 @@ class FileName(_name: String, _noExtraSpaces: Boolean = true) {
  * @param url The URL to parse.
  */
 fun parseFilenameFromUrl(url: URL): FileName {
-    var filename: FileName
     try {
-        filename = FileName(url.path.split("/").dropLastWhile { it.isEmpty() }.last())
+        return FileName(url.path.split("/").dropLastWhile { it.isEmpty() }.last())
     } catch (e: NoSuchElementException) {
-        filename = FileName("")
+        return FileName("")
     }
-    return filename
 }
