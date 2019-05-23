@@ -1,6 +1,7 @@
 package podcastengine.file
 
 import java.net.URL
+import java.util.NoSuchElementException
 
 class FileName(_name: String, _noExtraSpaces: Boolean = true) {
 
@@ -20,7 +21,6 @@ class FileName(_name: String, _noExtraSpaces: Boolean = true) {
 
     val noExtraSpaces = _noExtraSpaces  // Whether to remove extra spaces when parsing the file name
     val name = parse(_name)             // Automatically parse the filename when initializing the object
-    val extension = name.split(".").dropLastWhile { it.isEmpty() }.last()   // The file extension
 
     /**
      * Removes invalid file name characters.
@@ -81,5 +81,11 @@ class FileName(_name: String, _noExtraSpaces: Boolean = true) {
  * @param url The URL to parse.
  */
 fun parseFilenameFromUrl(url: URL): FileName {
-    return FileName(url.path.split("/").dropLastWhile { it.isEmpty() }.last())
+    var filename: FileName
+    try {
+        filename = FileName(url.path.split("/").dropLastWhile { it.isEmpty() }.last())
+    } catch (e: NoSuchElementException) {
+        filename = FileName("")
+    }
+    return filename
 }
