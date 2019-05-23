@@ -114,8 +114,14 @@ fun main(args: Array<String>) {
 
 }
 
-fun download(RSS: Document, downloadTo: String) {
-    val podcast = createPodcastFromRss(RSS)
+/**
+ * Download all podcasts listed in an RSS Document object.
+ *
+ * @param rss The RSS Document object.
+ * @param downloadTo The path of the directory to download the file to.
+ */
+fun download(rss: Document, downloadTo: String) {
+    val podcast = createPodcastFromRss(rss)
 
     for (episode in podcast.episodes) {
         episode.download(downloadTo)

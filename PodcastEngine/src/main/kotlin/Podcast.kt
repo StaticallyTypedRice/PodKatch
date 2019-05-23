@@ -45,8 +45,12 @@ class Episode(_title: String, _file: URL) {
     var fileLength:Long? = null     // The episode file length
     var fileType:String? = null     // The episode file type
 
+    /**
+     * Download the episode.
+     *
+     * @param outputDir The path of the directory to download the file to.
+     */
     fun download(outputDir: String) {
-        // Download the episode
 
         println("TODO: Download '$title' to '$outputDir'.")
     }

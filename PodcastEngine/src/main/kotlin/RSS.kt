@@ -16,9 +16,12 @@ import com.github.kittinunf.fuel.core.Request
 import podcastengine.podcast.*
 import java.util.*
 
+/**
+ * Download an online RSS file.
+ *
+ * @param url The URL of the RSS file.
+ */
 fun getRemoteRss(url: URL): Request {
-
-    // Use request.response { request, response, result -> parseRss(response) } to parse the data.
 
     val request: Request = Fuel.get(url.toString())
 
@@ -26,12 +29,22 @@ fun getRemoteRss(url: URL): Request {
 
 }
 
+/**
+ * Read a local RSS file.
+ *
+ * @param path The file path of the RSS file.
+ */
 fun getLocalRss(path: String): File {
     val rssFile = File(path)
 
     return rssFile
 }
 
+/**
+ * Parse RSS (XML) data into a Document object.
+ *
+ * @param rss A string, byte array or file object containing the RSS data.
+ */
 fun parseRss(rss: String): Document {
     val rssInput = InputSource(StringReader(rss))
     val rssDocument: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(rssInput)
@@ -63,8 +76,12 @@ fun parseRss(rss: File): Document {
     return rssDocument
 }
 
+/**
+ * Parses a colon separated timestamp to a Duration object.
+ *
+ * @param time A string in the format HH:MM:SS
+ */
 fun parseDurationFromColonSeparatedTime(time: String): Duration {
-    // Parse a string in the format HH:MM:SS to a Duration object
 
     val duration = Duration.ZERO
 
@@ -77,8 +94,12 @@ fun parseDurationFromColonSeparatedTime(time: String): Duration {
     return duration
 }
 
+/**
+ * Create a Podcast object from an rss document.
+ *
+ *  @param rss A Document object containing the RSS feed.
+ */
 fun createPodcastFromRss(rss: Document): Podcast {
-    // Create a Podcast object from an rss document
 
     // Get the rss channel element
     val channel: Element = rss.getElementsByTagName("channel").item(0) as Element
