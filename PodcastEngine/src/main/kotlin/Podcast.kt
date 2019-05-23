@@ -4,7 +4,7 @@ import java.net.URL
 import java.time.Duration
 import java.util.Date
 
-import podcastengine.file.FileName
+import podcastengine.file.*
 
 class Podcast {
     var title: String? = null           // The podcast title
@@ -30,6 +30,7 @@ class Podcast {
 class Episode(_title: String, _url: URL) {
     val title: String = _title      // The episode title
     val url: URL = _url             // The episode url
+    val file: FileName = parseFilenameFromUrl(_url) // The Episode file name
 
     var guid: String? = null        // The episode GUID
     var description: String? = null // The episode description
