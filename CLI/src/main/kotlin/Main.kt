@@ -3,10 +3,10 @@ package podkatch.cli
 import java.net.URL
 import java.io.File
 import java.io.FileNotFoundException
-import java.net.MalformedURLException
 import org.w3c.dom.Document
 import com.github.kittinunf.fuel.core.Request
 
+import podkatch.cli.input.*
 import podcastengine.rss.*
 
 fun main(args: Array<String>) {
@@ -22,71 +22,25 @@ fun main(args: Array<String>) {
     println(" ############################################")
     println()
 
-    var location: String
-    var outputDir: String
-    var remoteRss: Boolean = false
-    var remoteRssInput: String?
-    var rssURL = URL("https://example.com/")
+    var rssUrl = URL("https://example.com/")
     var rssFile = File("")
 
     // Ask if the RSS file is remote or local
-    do {
-        println("Is the RSS file remote or local?")
-        println("1: Remote (default)    2: Local")
-        remoteRssInput = readLine()
-
-        if ((remoteRssInput == "1") || (remoteRssInput == "")) {
-            remoteRss = true
-        } else if (remoteRssInput == "2") {
-            remoteRss = false
-        } else {
-            println()
-            println("Invalid input. Please enter '1', '2', or a blank line.")
-        }
-
-        // If the input is a blank line, there is no need to print another one.
-        if (remoteRssInput != "") {
-            println()
-        }
-
-    } while ((remoteRssInput != "") && (remoteRssInput != "1") && (remoteRssInput != "2"))
+    val remoteRss = askIfRemoteRss()
 
     // Ask for the RSS location
-    do {
-        print("Podcast RSS: ")
-        location = readLine()!!
-
-        // Validate the RSS location
-        if (remoteRss) {
-            try {
-                rssURL = URL(location)
-            } catch (e: MalformedURLException) {
-                println("Error: URL invalid (${e.message})")
-                location = ""
-            } catch (e: Exception) {
-                println("Error: ${e.message}")
-                location = ""
-            }
-        } else {
-            try {
-                rssFile = File(location)
-            } catch (e: Exception) {
-                println("Error: ${e.message}")
-                location = ""
-            }
-        }
-    } while (location == "")
+    if (remoteRss) {
+        rssUrl = askForRssUrl()
+    } else {
+        rssFile = askForRssFile()
+    }
 
     // Ask for the download location
-    print("Download to (download): ")
-    outputDir = readLine()!!
-    if (outputDir == "") {
-        outputDir = "download"
-    }
+    val outputDir = askForDownloadLocation()
 
     if (remoteRss) {
 
-        val request: Request = getRemoteRss(rssURL)
+        val request: Request = getRemoteRss(rssUrl)
         println("Downloading RSS file...")
 
         val (rssRequest, rssResponse, rssRresult) = request.response()
@@ -101,23 +55,18 @@ fun main(args: Array<String>) {
         do {
             try {
                 fileValid = true
-                val rssFile = parseRss(getLocalRss(location))
-                download(rssFile, outputDir)
+                val rssDocument = parseRss(getLocalRss(rssFile))
+                download(rssDocument, outputDir)
             } catch (e: FileNotFoundException) {
                 fileValid = false
                 println("Error: ${e.message}")
                 println()
 
                 // Ask for the location again
-                location = ""
-                do {
-                    print("Podcast RSS: ")
-                    location = readLine()!!
-                } while (location == "")
+                rssFile = askForRssFile()
             }
         } while (!fileValid)
     }
-
 }
 
 /**
