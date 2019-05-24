@@ -2,8 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="PodKatch.Podcast.main" target="1.8" />
-      <module name="PodKatch.Podcast.test" target="1.8" />
+      <module name="PodKatch.CLI.main" target="1.8" />
+      <module name="PodKatch.CLI.test" target="1.8" />
+      <module name="PodKatch.GUI.main" target="1.8" />
+      <module name="PodKatch.GUI.test" target="1.8" />
+      <module name="PodKatch.PodcastEngine.main" target="1.8" />
+      <module name="PodKatch.PodcastEngine.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
