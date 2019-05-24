@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        maven {
+            setUrl("https://plugins.gradle.org/m2/")
+        }
+    }
+    dependencies {
+        classpath("org.openjfx:javafx-plugin:0.0.7")
+    }
+}
+
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.31'
@@ -35,3 +46,8 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
+//apply(plugin = "org.openjfx.javafxplugin")
+
+javafx {
+    modules("javafx.controls", "javafx.fxml")
+}
