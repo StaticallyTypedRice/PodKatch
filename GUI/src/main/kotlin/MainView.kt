@@ -2,7 +2,7 @@ package kodkatch.gui.views
 
 import tornadofx.*
 
-class MainView : View("PodKatch") {
+class MainView : View("PodKatch Podcast Client") {
     override val root = hbox {
         val sidebar = vbox {
             val addPodcastBtn = button("Add podcast")
