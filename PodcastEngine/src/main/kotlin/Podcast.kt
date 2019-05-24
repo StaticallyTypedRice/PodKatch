@@ -3,6 +3,8 @@ package podcastengine.podcast
 import java.net.URL
 import java.time.Duration
 import java.util.Date
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.Request
 
 import podcastengine.file.*
 
@@ -49,11 +51,8 @@ class Episode(_title: String, _url: URL) {
 
     /**
      * Download the episode.
-     *
-     * @param outputDir The path of the directory to download the file to.
      */
-    fun download(outputDir: String) {
-
-        println("TODO: Download '$title' to '$outputDir'.")
+    fun download(): Request {
+        return Fuel.get(url.toString())
     }
 }
