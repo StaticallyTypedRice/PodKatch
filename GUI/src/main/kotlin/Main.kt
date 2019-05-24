@@ -2,10 +2,8 @@ package podkatch.gui
 
 import tornadofx.*
 
-import kodkatch.gui.views.MainView
+import podkatch.gui.app.MainApp
 
 fun main(args: Array<String>) {
     launch<MainApp>(args)
 }
-
-class MainApp: App(MainView::class)
