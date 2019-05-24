@@ -124,6 +124,6 @@ fun download(rss: Document, downloadTo: String) {
     val podcast = createPodcastFromRss(rss)
 
     for (episode in podcast.episodes) {
-        episode.download(downloadTo)
+        val download = episode.download()
     }
 }
