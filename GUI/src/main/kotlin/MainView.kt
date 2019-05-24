@@ -7,7 +7,11 @@ class MainView : View("PodKatch") {
         val sidebar = vbox {
             val addPodcastBtn = button("Add podcast")
             val updateBtn = button("Update podcasts")
-            label("The sidebar.")
+            separator()
+            label("Subscribed podcasts")
+            separator()
+            label("Everything else in the sidebar.")
+
         }
         val window = vbox {
             label("Everything else will go here.")
