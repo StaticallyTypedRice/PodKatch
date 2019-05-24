@@ -32,12 +32,14 @@ fun getRemoteRss(url: URL): Request {
 /**
  * Read a local RSS file.
  *
- * @param path The file path of the RSS file.
+ * @param path The file path or File object of the RSS file.
  */
 fun getLocalRss(path: String): File {
     val rssFile = File(path)
-
     return rssFile
+}
+fun getLocalRss(file: File): File {
+    return file
 }
 
 /**
