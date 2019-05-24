@@ -1,6 +1,7 @@
 package podkatch.cli
 
 import java.net.URL
+import java.io.File
 import java.io.FileNotFoundException
 import java.net.MalformedURLException
 import org.w3c.dom.Document
@@ -25,6 +26,8 @@ fun main(args: Array<String>) {
     var outputDir: String
     var remoteRss: Boolean = false
     var remoteRssInput: String?
+    var rssURL = URL("https://example.com/")
+    var rssFile = File("")
 
     // Ask if the RSS file is remote or local
     do {
@@ -52,6 +55,26 @@ fun main(args: Array<String>) {
     do {
         print("Podcast RSS: ")
         location = readLine()!!
+
+        // Validate the RSS location
+        if (remoteRss) {
+            try {
+                rssURL = URL(location)
+            } catch (e: MalformedURLException) {
+                println("Error: URL invalid (${e.message})")
+                location = ""
+            } catch (e: Exception) {
+                println("Error: ${e.message}")
+                location = ""
+            }
+        } else {
+            try {
+                rssFile = File(location)
+            } catch (e: Exception) {
+                println("Error: ${e.message}")
+                location = ""
+            }
+        }
     } while (location == "")
 
     // Ask for the download location
@@ -62,31 +85,15 @@ fun main(args: Array<String>) {
     }
 
     if (remoteRss) {
-        var onlineRssValid: Boolean
 
-        do {
-            try {
-                onlineRssValid = true
-                val request: Request = getRemoteRss(URL(location))
-                println("Downloading RSS file...")
+        val request: Request = getRemoteRss(rssURL)
+        println("Downloading RSS file...")
 
-                val (rssRequest, rssResponse, rssRresult) = request.response()
-                val (rssBytes, rssError) = rssRresult
-                val rssFile: Document = parseRss(rssBytes)
+        val (rssRequest, rssResponse, rssRresult) = request.response()
+        val (rssBytes, rssError) = rssRresult
+        val rssDocument: Document = parseRss(rssBytes)
 
-                download(rssFile, outputDir)
-            } catch (e: MalformedURLException) {
-                onlineRssValid = false
-                println("Error: URL invalid (${e.message})")
-
-                // Ask for the location again
-                location = ""
-                do {
-                    print("Podcast RSS: ")
-                    location = readLine()!!
-                } while (location == "")
-            }
-        } while (!onlineRssValid)
+        download(rssDocument, outputDir)
 
     } else {
         var fileValid: Boolean
@@ -109,7 +116,6 @@ fun main(args: Array<String>) {
                 } while (location == "")
             }
         } while (!fileValid)
-
     }
 
 }
