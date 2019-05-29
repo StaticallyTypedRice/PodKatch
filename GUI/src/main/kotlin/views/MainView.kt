@@ -4,6 +4,10 @@ import tornadofx.*
 
 class MainView : View("PodKatch Podcast Client") {
     override val root = hbox {
+        style {
+            importStylesheet("/css/third-party/goliath/Goliath-Base.css")
+            importStylesheet("/css/third-party/goliath/Goliath-Light.css")
+        }
         val sidebar = vbox {
             val addPodcastBtn = button("Add podcast")
             val updateBtn = button("Update podcasts")
