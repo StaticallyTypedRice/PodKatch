@@ -22,11 +22,9 @@
  * SOFTWARE.
  */
 
-package goliath.css.main;
+package goliathcss.main;
 
-import goliath.css.interfaces.FXTheme;
-import java.util.ArrayList;
-import java.util.List;
+import goliathcss.interfaces.FXTheme;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;

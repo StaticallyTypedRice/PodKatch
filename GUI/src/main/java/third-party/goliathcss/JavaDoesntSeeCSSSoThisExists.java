@@ -22,18 +22,25 @@
  * SOFTWARE.
  */
 
-package goliath.css.interfaces;
+package goliathcss;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.scene.text.Font;
+import java.nio.channels.Selector;
+import javafx.css.CssParser;
+import javafx.css.Declaration;
+import javafx.css.ParsedValue;
+import javafx.css.Style;
+import javafx.css.Stylesheet;
+import javafx.css.converter.ColorConverter;
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 
-public interface FXTheme
+
+public class JavaDoesntSeeCSSSoThisExists
 {
-    public DoubleProperty scaleProperty();
-    public ObjectProperty<Font> fontProperty();
-    public ObjectProperty<String> backgroundColorProperty();
-    public ObjectProperty<String> secondaryBackgroundColorProeprty();
-    public ObjectProperty<String> selectedColorProperty();
-    public ObjectProperty<String> textColorProperty();
+    public JavaDoesntSeeCSSSoThisExists()
+    {
+       CssParser parser = new CssParser();
+       Stylesheet sh = parser.parse("goliath/css/Goliath-Envy.css");
+       
+    }
 }
