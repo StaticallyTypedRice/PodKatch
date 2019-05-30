@@ -14,9 +14,37 @@ Depends on the GoliathCSS library.
     -fx-theme-tab-close-color: -fx-theme-label-text;
     -fx-highlight-fill: -fx-theme-selected;
 
-    -sidebar-background: #DBDBDB;
+    /*-fx-padding-default: 3;
+    -fx-margin-default: -fx-padding-default;*/
+
+    -sidebar-color-1: #ededed;
+    -sidebar-color-2: #dbdbdb;
+    -sidebar-color-3: #c1c1c1;
+
+    -sidebar-background-color: -sidebar-color-2;
+    -sidebar-separator-color: -sidebar-color-3;
 }
 
 .button:pressed {
     -fx-background-color: -fx-theme-selectable-active;
+}
+
+.sidebar {
+    -fx-background-color: -sidebar-background-color;
+}
+.sidebar .button {
+    -fx-background-color: -sidebar-background-color;
+}
+.sidebar .button:hover {
+    -fx-background-color: -sidebar-color-1;
+}
+.sidebar .button:pressed {
+    -fx-background-color: -sidebar-separator-color;
+}
+.sidebar .label {
+    -fx-padding: 0 3 0 3;
+}
+.sidebar .separator:horizontal .line {
+    -fx-border-color: -sidebar-separator-color transparent transparent transparent, transparent transparent transparent transparent;
+    -fx-border-width: 1, 0;
 }
