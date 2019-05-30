@@ -25,8 +25,14 @@ Depends on the GoliathCSS library.
     -sidebar-separator-color: -sidebar-color-3;
 }
 
+.button {
+    -fx-background-color: -sidebar-background-color;
+}
+.button:hover {
+    -fx-background-color: -sidebar-color-1;
+}
 .button:pressed {
-    -fx-background-color: -fx-theme-selectable-active;
+    -fx-background-color: -sidebar-separator-color;
 }
 
 .sidebar {
