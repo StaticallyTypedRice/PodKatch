@@ -8,6 +8,7 @@ class MainView : View("PodKatch Podcast Client") {
             importStylesheet("/css/third-party/goliath/Goliath-Base.css")
             importStylesheet("/css/third-party/goliath/Goliath-Light.css")
             importStylesheet("/css/PodKatch-Main.css")
+            importStylesheet("/css/PodKatch-Light.css")
         }
         val sidebar = vbox {
             val addPodcastBtn = button("Add podcast")

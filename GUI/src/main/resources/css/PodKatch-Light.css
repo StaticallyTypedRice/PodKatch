@@ -1,0 +1,14 @@
+/* PodKatch Light Mode CSS
+
+Depends on the GoliathCSS library.
+*/
+
+.root
+{
+    -fx-theme-selectable-active: #A1A1A1;
+}
+
+.button:pressed
+{
+    -fx-background-color: -fx-theme-selectable-active;
+}
