@@ -3,8 +3,18 @@
 Depends on the GoliathCSS library.
 */
 
-.root {
-    -fx-theme-selectable-active: #A1A1A1;
+* {
+    -fx-theme-header: #FFFFFF;
+    -fx-theme-background: -fx-theme-header;
+    -fx-theme-background-alt: #F2F2F2;
+    -fx-theme-selected: #CBEAFF;
+    -fx-theme-label-text: #333333;
+    -fx-theme-selectable-hover: #E1E1E1;
+    -fx-theme-selectable-active: #DBDBDB;
+    -fx-theme-tab-close-color: -fx-theme-label-text;
+    -fx-highlight-fill: -fx-theme-selected;
+
+    -sidebar-background: #DBDBDB;
 }
 
 .button:pressed {
