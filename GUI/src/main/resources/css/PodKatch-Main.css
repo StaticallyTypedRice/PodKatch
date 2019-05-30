@@ -3,3 +3,9 @@
 Depends on the GoliathCSS library.
 */
 
+.sidebar .label {
+    -fx-padding: 0 3 0 3;
+}
+.sidebar .separator:horizontal .line {
+    -fx-border-width: 1, 0;
+}
