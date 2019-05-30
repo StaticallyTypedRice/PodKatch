@@ -4,13 +4,13 @@ Depends on the GoliathCSS library.
 */
 
 * {
-    -fx-theme-header: #FFFFFF;
+    -fx-theme-header: #ffffff;
     -fx-theme-background: -fx-theme-header;
-    -fx-theme-background-alt: #F2F2F2;
-    -fx-theme-selected: #CBEAFF;
+    -fx-theme-background-alt: #f2f2f2;
+    -fx-theme-selected: #cbeaff;
     -fx-theme-label-text: #333333;
-    -fx-theme-selectable-hover: #E1E1E1;
-    -fx-theme-selectable-active: #DBDBDB;
+    -fx-theme-selectable-hover: #e1e1e1;
+    -fx-theme-selectable-active: #dbdbdb;
     -fx-theme-tab-close-color: -fx-theme-label-text;
     -fx-highlight-fill: -fx-theme-selected;
 
