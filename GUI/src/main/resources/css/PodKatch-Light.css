@@ -23,6 +23,12 @@ Depends on the GoliathCSS library.
 
     -sidebar-background-color: -sidebar-color-2;
     -sidebar-separator-color: -sidebar-color-3;
+
+    -player-color-1: #ffffff;
+    -player-color-2: #a1a1a1;
+    -player-color-3: #7f7f7f;
+
+    -player-background-color: -player-color-2;
 }
 
 .button {
@@ -49,4 +55,8 @@ Depends on the GoliathCSS library.
 }
 .sidebar .separator:horizontal .line {
     -fx-border-color: -sidebar-separator-color transparent transparent transparent, transparent transparent transparent transparent;
+}
+
+.player {
+    -fx-background-color: -player-background-color;
 }
