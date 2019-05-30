@@ -29,6 +29,7 @@ class MainView : View("PodKatch Podcast Client") {
                 label("Everything else will go here.")
                 button("Placeholder button")
                 val playerControls = hbox {
+                    addClass("player")
                     label("Play/pause controls")
                 }
             }
