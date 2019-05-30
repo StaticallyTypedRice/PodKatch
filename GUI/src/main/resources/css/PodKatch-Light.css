@@ -3,12 +3,10 @@
 Depends on the GoliathCSS library.
 */
 
-.root
-{
+.root {
     -fx-theme-selectable-active: #A1A1A1;
 }
 
-.button:pressed
-{
+.button:pressed {
     -fx-background-color: -fx-theme-selectable-active;
 }
