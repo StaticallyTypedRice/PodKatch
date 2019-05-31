@@ -1,5 +1,6 @@
 package kodkatch.gui.views
 
+import podkatch.gui.views.*
 import tornadofx.*
 
 class MainView : View("PodKatch Podcast Client") {
@@ -10,30 +11,8 @@ class MainView : View("PodKatch Podcast Client") {
             importStylesheet("/css/PodKatch-Main.css")
             importStylesheet("/css/PodKatch-Light.css")
         }
-        val sidebar = left{
-            vbox {
-                addClass("sidebar")
-
-                val addPodcastBtn = button("Add podcast")
-                val updateBtn = button("Update podcasts")
-                separator()
-                label("Subscribed podcasts")
-                separator()
-                label("Everything else in the sidebar.")
-            }
-        }
-        val window = right {
-            vbox {
-                addClass("window")
-
-                label("Everything else will go here.")
-                button("Placeholder button")
-                val playerControls = hbox {
-                    addClass("player")
-                    label("Play/pause controls")
-                }
-            }
-        }
+        val sidebar = left(Sidebar::class)
+        val window = right(Window::class)
 
     }
 }
