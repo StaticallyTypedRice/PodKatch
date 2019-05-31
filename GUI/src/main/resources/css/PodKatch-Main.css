@@ -24,6 +24,10 @@ Depends on the GoliathCSS library.
     -fx-padding: 0.5em 1em .5em 1em;
 }
 
+.window {
+    -fx-padding: 0.5em 1em 0 1em
+}
+
 .player {
     -fx-padding: 0.5em 2em 0.5em 2em;
 }
