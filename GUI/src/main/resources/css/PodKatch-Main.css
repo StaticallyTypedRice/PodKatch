@@ -3,9 +3,16 @@
 Depends on the GoliathCSS library.
 */
 
+.sidebar {
+    -fx-pref-width: 250px;
+}
 .sidebar .label {
     -fx-padding: 0 3 0 3;
 }
 .sidebar .separator:horizontal .line {
     -fx-border-width: 1, 0;
+}
+.sidebar .button {
+    -fx-pref-width: 250px;
+    -fx-alignment: CENTER-LEFT;
 }
