@@ -18,3 +18,7 @@ Depends on the GoliathCSS library.
     -fx-alignment: CENTER-LEFT;
     -fx-padding: 0.5em 1em .5em 1em;
 }
+
+.player {
+    -fx-padding: 0.5em 2em 0.5em 2em;
+}
