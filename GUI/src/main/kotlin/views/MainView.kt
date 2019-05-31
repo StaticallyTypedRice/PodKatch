@@ -12,7 +12,7 @@ class MainView : View("PodKatch Podcast Client") {
             importStylesheet("/css/PodKatch-Light.css")
         }
         val sidebar = left(Sidebar::class)
-        val window = right(Window::class)
+        val window = center(Window::class)
 
     }
 }
