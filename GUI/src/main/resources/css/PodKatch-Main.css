@@ -4,14 +4,17 @@ Depends on the GoliathCSS library.
 */
 
 .sidebar {
-    -fx-pref-width: 250px;
+    -sidebar-width: 21em;
+    -fx-pref-width: -sidebar-width;
 }
 .sidebar .label {
-    -fx-padding: 0 3 0 3;
+    -fx-padding: 0.3em 1em 0.3em 1em;
 }
 .sidebar .separator:horizontal .line {
-    -fx-border-width: 1, 0;
+    -fx-border-width: 0.09em, 0;
 }
 .sidebar .button {
-    -fx-pref-width: 250px;
+    -fx-pref-width: -sidebar-width;
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 0.5em 1em .5em 1em;
 }
