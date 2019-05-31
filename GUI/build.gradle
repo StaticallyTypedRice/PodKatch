@@ -36,6 +36,7 @@ dependencies {
     compile 'no.tornado:tornadofx:1.7.17'
     //compile 'de.jensd:fontawesomefx:8.9'
     compile 'org.kordamp.ikonli:ikonli-javafx:11.3.4'
+    compile 'org.kordamp.ikonli:ikonli-themify-pack:11.3.4'
 
     //compile name: 'PodcastEngine-1.0-SNAPSHOT'
     compile project(':PodcastEngine')
