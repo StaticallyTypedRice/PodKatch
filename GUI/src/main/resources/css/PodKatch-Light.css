@@ -60,3 +60,6 @@ Depends on the GoliathCSS library.
 .player {
     -fx-background-color: -player-background-color;
 }
+.player .label {
+    -fx-text-fill: -player-color-1;
+}
