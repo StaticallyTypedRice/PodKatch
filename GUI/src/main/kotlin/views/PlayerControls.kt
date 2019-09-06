@@ -7,7 +7,7 @@ import tornadofx.WizardStyles.Companion.graphic
 class PlayerControls : View() {
     override val root = hbox {
         addClass("player")
-        val backwardBtn = button {
+        val lastTrackBtn = button {
             graphic = FontIcon().apply {
                 iconLiteral="ti-control-backward"
             }
@@ -19,7 +19,7 @@ class PlayerControls : View() {
             }
 
         }
-        val forwardBtn = button {
+        val nextTrackBtn = button {
             graphic = FontIcon().apply {
                 iconLiteral="ti-control-forward"
             }
