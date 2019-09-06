@@ -31,3 +31,10 @@ Depends on the GoliathCSS library.
 .player {
     -fx-padding: 0.5em 2em 0.5em 2em;
 }
+.player .button .graphic {
+    -fx-padding: 0;
+    -fx-margin: 0 2em 0 2em;
+}
+.player .button .graphic {
+    -fx-icon-size: 1;
+}

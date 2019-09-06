@@ -10,21 +10,18 @@ class PlayerControls : View() {
         val backwardBtn = button {
             graphic = FontIcon().apply {
                 iconLiteral="ti-control-backward"
-                iconSize=25
             }
 
         }
         val playBtn = button {
             graphic = FontIcon().apply {
                 iconLiteral="ti-control-play"
-                iconSize=25
             }
 
         }
         val forwardBtn = button {
             graphic = FontIcon().apply {
                 iconLiteral="ti-control-forward"
-                iconSize=25
             }
 
         }

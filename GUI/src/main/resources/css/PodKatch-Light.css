@@ -63,3 +63,15 @@ Depends on the GoliathCSS library.
 .player .label {
     -fx-text-fill: -player-color-1;
 }
+.player .button {
+    -fx-background-color: transparent !important;
+}
+.player .button .graphic {
+    -fx-icon-color: -player-color-1;
+}
+.player .button:hover .graphic {
+    -fx-icon-color: -sidebar-separator-color;
+}
+.player .button:pressed .graphic {
+    -fx-icon-color: -player-color-3;
+}
