@@ -8,5 +8,8 @@ git merge master
 git checkout feature-gui
 git merge master
 
+git checkout feature-gui-css
+git merge master
+
 git checkout feature-engine
 git merge master
