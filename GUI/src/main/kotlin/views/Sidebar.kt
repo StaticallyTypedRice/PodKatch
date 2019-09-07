@@ -11,6 +11,11 @@ class Sidebar : View() {
                 println("TODO: Create a dialog box for adding podcasts.")
             }
         }
+        val editPodcastBtn = button("Edit podcasts") {
+            action {
+                println("TODO: Create a dialog box for editing podcasts.")
+            }
+        }
         val updateBtn = button("Update podcasts") {
             action {
                 println("TODO: Automatically update all subscribed RSS files and download new podcast episodes.")
