@@ -1,4 +1,4 @@
-package kodkatch.gui.views
+package podkatch.gui.views
 
 import javafx.scene.image.Image
 import podkatch.gui.views.*
