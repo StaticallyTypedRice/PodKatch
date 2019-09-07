@@ -1,0 +1,14 @@
+#!/bin/bash
+
+git checkout master
+git pull origin master
+
+git checkout feature-cli
+git pull origin feature-cli
+
+git checkout feature-gui
+git pull origin feature-gui
+
+git checkout feature-engine
+git pull origin feature-engine
+
