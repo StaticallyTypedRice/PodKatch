@@ -1,5 +1,6 @@
 package podkatch.gui.views
 
+import podkatch.gui.views.dialogs.*
 import tornadofx.*
 
 class Sidebar : View() {
@@ -8,8 +9,8 @@ class Sidebar : View() {
 
         val addPodcastBtn = button("Add podcast") {
             action {
-                println("TODO: Create a dialog box for adding podcasts.")
                 tooltip("Subscribe to a podcast")
+                AddPodcastDialog().openModal()
             }
         }
         val editPodcastBtn = button("Edit podcasts") {
