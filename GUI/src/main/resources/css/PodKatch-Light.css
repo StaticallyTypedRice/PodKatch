@@ -4,6 +4,10 @@ Depends on the GoliathCSS library.
 */
 
 * {
+    /*-fx-padding-default: 3;
+    -fx-margin-default: -fx-padding-default;*/
+
+    /* COLORS */
     -fx-theme-header: #ffffff;
     -fx-theme-background: -fx-theme-header;
     -fx-theme-background-alt: #f2f2f2;
@@ -13,9 +17,6 @@ Depends on the GoliathCSS library.
     -fx-theme-selectable-active: #dbdbdb;
     -fx-theme-tab-close-color: -fx-theme-label-text;
     -fx-highlight-fill: -fx-theme-selected;
-
-    /*-fx-padding-default: 3;
-    -fx-margin-default: -fx-padding-default;*/
 
     -sidebar-color-1: #e4e4e4;
     -sidebar-color-2: #dbdbdb;
@@ -33,6 +34,7 @@ Depends on the GoliathCSS library.
     -input-background: -sidebar-color-1;
     -input-background-focus: #dcdcdc;
     -input-text: #000000;
+    /* END COLORS */
 }
 
 .button {
