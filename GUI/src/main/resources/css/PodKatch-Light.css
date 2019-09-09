@@ -26,9 +26,12 @@ Depends on the GoliathCSS library.
 
     -player-color-1: #ffffff;
     -player-color-2: #a1a1a1;
-    -player-color-3: #7f7f7f;
+    -player-color-3: #7c1c1c1;
 
     -player-background-color: -player-color-2;
+
+    -input-background: #e4e4e4;
+    -input-text: #000000;
 }
 
 .button {
@@ -74,4 +77,9 @@ Depends on the GoliathCSS library.
 }
 .player .button:pressed .graphic {
     -fx-icon-color: -player-color-3;
+}
+
+.text-field {
+    -fx-background-color: -input-background;
+    -fx-text-fill: -input-text;
 }
