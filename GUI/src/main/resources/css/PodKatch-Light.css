@@ -30,7 +30,8 @@ Depends on the GoliathCSS library.
 
     -player-background-color: -player-color-2;
 
-    -input-background: #e4e4e4;
+    -input-background: -sidebar-color-1;
+    -input-background-focus: #dcdcdc;
     -input-text: #000000;
 }
 
@@ -82,4 +83,7 @@ Depends on the GoliathCSS library.
 .text-field {
     -fx-background-color: -input-background;
     -fx-text-fill: -input-text;
+}
+.text-field:focused {
+    -fx-background-color: -input-background-focus;
 }
