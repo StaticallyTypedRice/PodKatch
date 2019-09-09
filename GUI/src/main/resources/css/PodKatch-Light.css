@@ -58,7 +58,8 @@ Depends on the GoliathCSS library.
     -fx-background-color: -sidebar-separator-color;
 }
 .sidebar .separator:horizontal .line {
-    -fx-border-color: -sidebar-separator-color transparent transparent transparent, transparent transparent transparent transparent;
+    -fx-border-color: -sidebar-separator-color transparent transparent transparent,
+        transparent transparent transparent transparent;
 }
 
 .player {
