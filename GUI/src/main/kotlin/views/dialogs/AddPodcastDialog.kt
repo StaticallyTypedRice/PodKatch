@@ -2,7 +2,7 @@ package podkatch.gui.views.dialogs
 
 import tornadofx.*
 
-class AddPodcastDialog : View("Add Podcast") {
+class AddPodcastDialog : View("Subscribe to a Podcast") {
     override val root = vbox(2) {
         setMaxSize(500.toDouble(), 175.toDouble())
         addClass("dialog")
@@ -47,4 +47,3 @@ class AddPodcastDialog : View("Add Podcast") {
     }
 
 }
-
