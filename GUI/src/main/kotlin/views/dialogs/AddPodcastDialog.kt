@@ -2,12 +2,13 @@ package podkatch.gui.views.dialogs
 
 import tornadofx.*
 
-class AddPodcastDialog : View("Add Podcast") {
-    override val root = vbox {
-        setMaxSize(500.toDouble(), 250.toDouble())
+class AddPodcastDialog : View("Subscribe to a Podcast") {
+    override val root = vbox(2) {
+        setMaxSize(500.toDouble(), 175.toDouble())
+        addClass("dialog")
 
         label("Enter the url of a podcast RSS file:")
-        hbox {
+        hbox(5) {
             val rssUrlField = textfield {
                 //minWidth(450.toDouble())
             }
@@ -18,6 +19,7 @@ class AddPodcastDialog : View("Add Podcast") {
                 }
             }
         }
+        spacer()
 
         label("Or import a local RSS file:")
         button("Choose file...") {
@@ -27,9 +29,10 @@ class AddPodcastDialog : View("Add Podcast") {
                         filters=arrayOf(), mode=FileChooserMode.Single)
             }
         }
+        spacer()
 
         label("Or:")
-        hbox {
+        hbox(5) {
             val podcastPlatformSources = arrayOf("iTunes", "gPodder", "fyyd")
 
             podcastPlatformSources.forEach {
@@ -44,4 +47,3 @@ class AddPodcastDialog : View("Add Podcast") {
     }
 
 }
-
