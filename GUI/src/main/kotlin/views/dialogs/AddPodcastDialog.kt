@@ -11,7 +11,7 @@ class AddPodcastDialog : View("Add Podcast") {
             val rssUrlField = textfield {
                 //minWidth(450.toDouble())
             }
-            val rssUrlSubmit = button("OK") {
+            button("OK") {
                 tooltip("Subscribe to the podcast at this URL")
                 action {
                     println("RSS URL: ${rssUrlField.text}")
@@ -21,21 +21,18 @@ class AddPodcastDialog : View("Add Podcast") {
 
         label("Or:")
         hbox {
-            button("Browse or Search iTunes") {
-                tooltip("Subscribe to a podcast from iTunes")
-                action {
+            val podcastPlatformSources = arrayOf("iTunes", "gPodder", "fyyd")
 
+            podcastPlatformSources.forEach {
+                button("Browse or Search ${it}") {
+                    tooltip("Subscribe to a podcast from ${it}")
+                    action {
+
+                    }
                 }
             }
-
-            button("Import From File") {
-                tooltip("Import a local RSS file")
-                action {
-
-                }
-            }
-
         }
     }
+
 }
 
