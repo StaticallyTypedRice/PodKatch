@@ -19,6 +19,15 @@ class AddPodcastDialog : View("Add Podcast") {
             }
         }
 
+        label("Or import a local RSS file:")
+        button("Choose file...") {
+            tooltip("Import a local RSS file")
+            action {
+                val rssPathField = chooseFile("Import an RSS file",
+                        filters=arrayOf(), mode=FileChooserMode.Single)
+            }
+        }
+
         label("Or:")
         hbox {
             val podcastPlatformSources = arrayOf("iTunes", "gPodder", "fyyd")
