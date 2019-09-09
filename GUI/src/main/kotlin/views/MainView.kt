@@ -5,8 +5,10 @@ import podkatch.gui.views.*
 import tornadofx.*
 
 class MainView : View("PodKatch Podcast Client") {
+    init {
+        setStageIcon(Image("/img/icon.png"))
+    }
     override val root = borderpane {
-        setStageIcon(Image("file:/img/icon.png"))
         style {
             importStylesheet("/css/third-party/goliath/Goliath-Base.css")
             importStylesheet("/css/third-party/goliath/Goliath-Light.css")
