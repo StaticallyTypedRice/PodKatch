@@ -38,3 +38,7 @@ Depends on the GoliathCSS library.
 .player .button .graphic {
     -fx-icon-size: 1;
 }
+
+.dialog {
+    -fx-padding: 1em 1em 1em 1em;
+}

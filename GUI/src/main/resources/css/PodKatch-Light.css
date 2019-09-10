@@ -4,6 +4,10 @@ Depends on the GoliathCSS library.
 */
 
 * {
+    /*-fx-padding-default: 3;
+    -fx-margin-default: -fx-padding-default;*/
+
+    /* COLORS */
     -fx-theme-header: #ffffff;
     -fx-theme-background: -fx-theme-header;
     -fx-theme-background-alt: #f2f2f2;
@@ -14,9 +18,6 @@ Depends on the GoliathCSS library.
     -fx-theme-tab-close-color: -fx-theme-label-text;
     -fx-highlight-fill: -fx-theme-selected;
 
-    /*-fx-padding-default: 3;
-    -fx-margin-default: -fx-padding-default;*/
-
     -sidebar-color-1: #e4e4e4;
     -sidebar-color-2: #dbdbdb;
     -sidebar-color-3: #c1c1c1;
@@ -26,9 +27,14 @@ Depends on the GoliathCSS library.
 
     -player-color-1: #ffffff;
     -player-color-2: #a1a1a1;
-    -player-color-3: #7f7f7f;
+    -player-color-3: #7c1c1c1;
 
     -player-background-color: -player-color-2;
+
+    -input-background: -sidebar-color-1;
+    -input-background-focus: #dcdcdc;
+    -input-text: #000000;
+    /* END COLORS */
 }
 
 .button {
@@ -54,7 +60,8 @@ Depends on the GoliathCSS library.
     -fx-background-color: -sidebar-separator-color;
 }
 .sidebar .separator:horizontal .line {
-    -fx-border-color: -sidebar-separator-color transparent transparent transparent, transparent transparent transparent transparent;
+    -fx-border-color: -sidebar-separator-color transparent transparent transparent,
+        transparent transparent transparent transparent;
 }
 
 .player {
@@ -74,4 +81,12 @@ Depends on the GoliathCSS library.
 }
 .player .button:pressed .graphic {
     -fx-icon-color: -player-color-3;
+}
+
+.text-field {
+    -fx-background-color: -input-background;
+    -fx-text-fill: -input-text;
+}
+.text-field:focused {
+    -fx-background-color: -input-background-focus;
 }
