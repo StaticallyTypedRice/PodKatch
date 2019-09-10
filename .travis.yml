@@ -1,2 +1,5 @@
 language: java
 
+script:
+  - ./scripts/test.sh
+  - ./scripts/build.sh
