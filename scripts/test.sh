@@ -1,3 +1,5 @@
 #!/bin/bash
 
-../gradlew check --stacktrace
+echo Please run this script from the root of the repository.
+
+./gradlew check --stacktrace
