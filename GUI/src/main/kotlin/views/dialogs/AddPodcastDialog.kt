@@ -1,6 +1,9 @@
 package podkatch.gui.views.dialogs
 
+import podkatch.gui.subscribe.*
+
 import tornadofx.*
+import java.net.URL
 
 class AddPodcastDialog : View("Subscribe to a Podcast") {
     override val root = vbox(2) {
@@ -16,6 +19,10 @@ class AddPodcastDialog : View("Subscribe to a Podcast") {
                 tooltip("Subscribe to the podcast at this URL")
                 action {
                     println("RSS URL: ${rssUrlField.text}")
+
+                    if (rssUrlField.text.isNotEmpty()) {
+                        subscribeFromRss(URL(rssUrlField.text))
+                    }
                 }
             }
         }
@@ -36,8 +43,8 @@ class AddPodcastDialog : View("Subscribe to a Podcast") {
             val podcastPlatformSources = arrayOf("iTunes", "gPodder", "fyyd")
 
             podcastPlatformSources.forEach {
-                button("Browse or Search ${it}") {
-                    tooltip("Subscribe to a podcast from ${it}")
+                button("Browse or Search $it") {
+                    tooltip("Subscribe to a podcast from $it")
                     action {
 
                     }
