@@ -17,3 +17,9 @@ You can also build using the Gradle command in your `PATH` or with the included 
 ```bash
 ./gradlew assemble
 ```
+
+## Licenses
+
+Code for PodKatch is licensed under the MIT license. [See the license file for details.](LICENSE)
+
+Third party code in this repository have their own licenses, different from PodKatch code. [See the third party licenses.](LICENSE-3RD-PARTY.md)
