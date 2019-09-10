@@ -56,3 +56,9 @@ compileTestKotlin {
 javafx {
     modules("javafx.controls", "javafx.fxml")
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'podkatch.gui.MainKt'
+    }
+}
