@@ -4,7 +4,7 @@ import tornadofx.*
 
 class AddPodcastDialog : View("Subscribe to a Podcast") {
     override val root = vbox(2) {
-        setMaxSize(500.toDouble(), 175.toDouble())
+        setMaxSize(600.toDouble(), 0.toDouble())
         addClass("dialog")
 
         label("Enter the url of a podcast RSS file:")
