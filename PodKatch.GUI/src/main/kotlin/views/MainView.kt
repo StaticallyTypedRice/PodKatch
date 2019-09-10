@@ -6,7 +6,7 @@ import tornadofx.*
 
 class MainView : View("PodKatch Podcast Client") {
     init {
-        setStageIcon(Image("/img/icon.png"))
+        setStageIcon(Image("/img/icon-borderless.png"))
     }
     override val root = borderpane {
         style {
