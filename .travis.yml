@@ -7,18 +7,5 @@ jdk:
   - openjdk11
 
 script:
-  - jdk_switcher use oraclejdk8
-  - ./scripts/test.sh
-  - ./scripts/build.sh
-
-  - jdk_switcher use oraclejdk11
-  - ./scripts/test.sh
-  - ./scripts/build.sh
-
-  - jdk_switcher use openjdk10
-  - ./scripts/test.sh
-  - ./scripts/build.sh
-
-  - jdk_switcher use openjdk11
   - ./scripts/test.sh
   - ./scripts/build.sh
