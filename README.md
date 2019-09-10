@@ -6,17 +6,25 @@
 
 ## Building and Running
 
-PodKatch is still in development, so currently there is no official production build procedure. If you're testing the app or plan on contributing to it, it is recommended to build it directly from within IntelliJ, whether Community or Ultimate edition.
-
 First, clone this repository or otherwise download the source code. The `master` branch tends to contain the most recent *non-breaking* change.
 
-Open the project in Intellij, allow it to resolve dependencies, and use it to run or debug either `podkatch.cli.MainKt` or `podkatch.gui.MainKt`.
-
-You can also build using the Gradle command in your `PATH` or with the included `gradlew` script:
+Run the build script from the root of the repository:
 
 ```bash
-./gradlew assemble
+# If you're on Linux, Mac or other Unix-like operating systems
+
+./scripts/build.sh
 ```
+
+```batch
+:: If you're on Windows
+
+.\scripts\build.cmd
+```
+
+You can also directly build the project using `gradle` or `gradlew` commands.
+
+If you're testing the app or plan on contributing to it, it is recommended to run it directly from within IntelliJ, whether Community or Ultimate edition. Open the project in Intellij, allow it to resolve dependencies, and use it to run or debug either `podkatch.cli.MainKt` or `podkatch.gui.MainKt`.
 
 ## Licenses
 
