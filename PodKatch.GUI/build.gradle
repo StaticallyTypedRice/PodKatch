@@ -31,6 +31,8 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "com.squareup.sqldelight:sqlite-driver:1.2.0"
+
     compile 'com.github.kittinunf.fuel:fuel:2.0.1'
     compile 'com.github.kittinunf.fuel:fuel-coroutines:2.0.1'
     compile 'no.tornado:tornadofx:1.7.17'
