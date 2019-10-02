@@ -4,6 +4,8 @@ import java.io.File
 import java.net.URL
 import org.w3c.dom.Document
 import com.github.kittinunf.result.Result
+import javafx.scene.control.Alert
+import tornadofx.*
 
 import podcastengine.rss.getRemoteRss
 import podcastengine.rss.parseRss
@@ -20,7 +22,10 @@ fun subscribeFromRss(source: URL) {
             .responseString { request, response, result ->
                 when (result) {
                     is Result.Failure -> {
-                        println(result.getException())
+                        val error = result.getException()
+                        runLater {
+                            alert(Alert.AlertType.ERROR, "Could not download file", error.message)
+                        }
                     }
                     is Result.Success -> {
                         val rss = parseRss(result.get())
