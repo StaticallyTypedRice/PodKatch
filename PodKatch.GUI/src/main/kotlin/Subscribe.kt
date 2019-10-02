@@ -28,8 +28,14 @@ fun subscribeFromRss(source: URL) {
                         }
                     }
                     is Result.Success -> {
-                        val rss = parseRss(result.get())
-                        subscribe(rss)
+                        try {
+                            val rss = parseRss(result.get())
+                            subscribe(rss)
+                        } catch (e: Exception) {
+                            runLater {
+                                alert(Alert.AlertType.ERROR, "Could not parse file", e.message)
+                            }
+                        }
                     }
                 }
             }
