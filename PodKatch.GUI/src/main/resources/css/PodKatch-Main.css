@@ -3,11 +3,6 @@
 Depends on the GoliathCSS library.
 */
 
-.root {
-    -fx-pref-width: 1000px;
-    -fx-pref-height: 600px;
-}
-
 .sidebar {
     -sidebar-width: 21em;
     -fx-pref-width: -sidebar-width;
