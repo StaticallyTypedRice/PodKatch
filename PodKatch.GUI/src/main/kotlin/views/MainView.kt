@@ -15,6 +15,9 @@ class MainView : View("PodKatch Podcast Client") {
             importStylesheet("/css/PodKatch-Main.css")
             importStylesheet("/css/PodKatch-Light.css")
         }
+
+        setPrefSize(1000.toDouble(), 600.toDouble())
+
         val sidebar = left(Sidebar::class)
         val window = center(Window::class)
 
