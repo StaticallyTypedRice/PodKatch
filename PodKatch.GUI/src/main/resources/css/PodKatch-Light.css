@@ -90,3 +90,18 @@ Depends on the GoliathCSS library.
 .text-field:focused {
     -fx-background-color: -input-background-focus;
 }
+
+.alert.confirmation.dialog-pane,
+.text-input-dialog.dialog-pane,
+.choice-dialog.dialog-pane {
+    /*-fx-graphic: url("alert-dialog-confirmation.png");*/
+}
+.alert.information.dialog-pane {
+    /*-fx-graphic: url("alert-dialog-information.png");*/
+}
+.alert.warning.dialog-pane {
+    /*-fx-graphic: url("alert-dialog-warning.png");*/
+}
+.alert.error.dialog-pane {
+   /* -fx-graphic: url("alert-dialog-error.png");*/
+}
