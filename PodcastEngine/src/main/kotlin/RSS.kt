@@ -13,7 +13,7 @@ import org.w3c.dom.NodeList
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.Request
 
-import podcastengine.podcast.*
+import podcastengine.objects.*
 import java.util.*
 
 /**
