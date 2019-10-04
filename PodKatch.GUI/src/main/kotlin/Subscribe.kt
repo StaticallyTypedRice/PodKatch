@@ -10,6 +10,7 @@ import tornadofx.*
 import podcastengine.rss.getRemoteRss
 import podcastengine.rss.parseRss
 
+import podkatch.gui.views.dialogs.AlertDialog
 
 /**
  * Subscribe to a podcast given the RSS file.
@@ -24,7 +25,7 @@ fun subscribeFromRss(source: URL) {
                     is Result.Failure -> {
                         val error = result.getException()
                         runLater {
-                            alert(Alert.AlertType.ERROR, "Could not download file", error.message)
+                            alert(Alert.AlertType.ERROR, "Could not download file", error.message, owner = AlertDialog().currentWindow)
                         }
                     }
                     is Result.Success -> {
@@ -33,7 +34,7 @@ fun subscribeFromRss(source: URL) {
                             subscribe(rss)
                         } catch (e: Exception) {
                             runLater {
-                                alert(Alert.AlertType.ERROR, "Could not parse file", e.message)
+                                alert(Alert.AlertType.ERROR, "Could not parse file", e.message, owner = AlertDialog().currentWindow)
                             }
                         }
                     }
