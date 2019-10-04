@@ -6,7 +6,7 @@
 
 ## Building and Running
 
-First, clone this repository or otherwise download the source code. The `master` branch tends to contain the most recent *non-breaking* change.
+First, clone this repository or otherwise download the source code. The `master` branch tends to contain the most recent *major non-breaking* change.
 
 Run the build script from the root of the repository:
 
