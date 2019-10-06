@@ -30,4 +30,4 @@ If you're testing the app or plan on contributing to it, it is recommended to ru
 
 Code for PodKatch is licensed under the MIT license. [See the license file for details.](LICENSE)
 
-Third party code in this repository have their own licenses, different from PodKatch code. [See the third party licenses.](LICENSE-3RD-PARTY.md)
+Third party content in this repository have their own licenses, different from PodKatch code. [See the third party licenses.](LICENSE-3RD-PARTY.md)
