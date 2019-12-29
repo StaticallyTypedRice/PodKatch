@@ -1,9 +1,11 @@
 package podkatch.gui.views.dialogs
 
+import podkatch.gui.error.simpleErrorAlert
 import podkatch.gui.subscribe.*
 
 import tornadofx.*
 import java.io.File
+import java.net.MalformedURLException
 import java.net.URL
 
 class AddPodcastDialog : View("Subscribe to a Podcast") {
@@ -22,7 +24,11 @@ class AddPodcastDialog : View("Subscribe to a Podcast") {
                     println("RSS URL: ${rssUrlField.text}")
 
                     if (rssUrlField.text.isNotEmpty()) {
-                        subscribeFromRss(URL(rssUrlField.text))
+                        try {
+                            subscribeFromRss(URL(rssUrlField.text))
+                        } catch (e: MalformedURLException) {
+                            simpleErrorAlert("Invalid URL.", e.message)
+                        }
                     }
                 }
             }

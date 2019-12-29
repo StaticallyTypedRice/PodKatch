@@ -10,6 +10,7 @@ import tornadofx.*
 import podcastengine.rss.getRemoteRss
 import podcastengine.rss.parseRss
 import podcastengine.subscription.subscribe
+import podkatch.gui.error.simpleErrorAlert
 
 import podkatch.gui.views.dialogs.AlertDialog
 
@@ -26,7 +27,7 @@ fun subscribeFromRss(source: URL) {
                     is Result.Failure -> {
                         val error = result.getException()
                         runLater {
-                            alert(Alert.AlertType.ERROR, "Could not download file", error.message, owner = AlertDialog().currentWindow)
+                            runLater { simpleErrorAlert("Could not download file", error.message) }
                         }
                     }
                     is Result.Success -> {
@@ -35,7 +36,7 @@ fun subscribeFromRss(source: URL) {
                             subscribe(rss)
                         } catch (e: Exception) {
                             runLater {
-                                alert(Alert.AlertType.ERROR, "Could not parse file", e.message, owner = AlertDialog().currentWindow)
+                                runLater { simpleErrorAlert("Could not parse file", e.message) }
                             }
                         }
                     }
@@ -50,15 +51,12 @@ fun subscribeFromRss(source: File) {
             val rss = parseRss(source)
             subscribe(rss)
         } catch (e: Exception) {
-            val errorMessage = "Could not parse file: ${e.message}"
-            println(errorMessage)
-            runLater {
-                alert(Alert.AlertType.ERROR, errorMessage, e.message, owner = AlertDialog().currentWindow)
-            }
+            runLater { simpleErrorAlert("Could not parse file.", e.message) }
+
         }
     } else {
         runLater {
-            alert(Alert.AlertType.ERROR, "The file ${source.toString()} does not exist.")
+            runLater { simpleErrorAlert("The file does not exist.", source.toString()) }
         }
     }
 }
