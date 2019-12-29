@@ -1,8 +1,8 @@
 package podcastengine.subscription
 
 import org.w3c.dom.Document
-import java.io.File
-import java.net.URL
+
+import podcastengine.rss.createPodcastFromRss
 
 /**
  * Subscribe to a podcast given an RSS Document.
@@ -10,5 +10,7 @@ import java.net.URL
  * @param rss The podcast RSS Document.
  */
 fun subscribe(rss: Document) {
-    println("TODO")
+    val podcast = createPodcastFromRss(rss)
+
+    println("TODO: Store subscription information in a database.")
 }
