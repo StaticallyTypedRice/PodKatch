@@ -9,6 +9,7 @@ import tornadofx.*
 
 import podcastengine.rss.getRemoteRss
 import podcastengine.rss.parseRss
+import podcastengine.subscription.subscribe
 
 import podkatch.gui.views.dialogs.AlertDialog
 
@@ -47,11 +48,4 @@ fun subscribeFromRss(source: File) {
     println("TODO")
 }
 
-/**
- * Subscribe to a podcast given an RSS Document.
- *
- * @param rss The podcast RSS Document.
- */
-fun subscribe(rss: Document) {
-    println("TODO")
-}
+
