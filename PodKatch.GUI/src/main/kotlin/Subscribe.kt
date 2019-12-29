@@ -45,7 +45,22 @@ fun subscribeFromRss(source: URL) {
     httpAsync.join()
 }
 fun subscribeFromRss(source: File) {
-    println("TODO")
+    if (source.exists()) {
+        try {
+            val rss = parseRss(source)
+            subscribe(rss)
+        } catch (e: Exception) {
+            val errorMessage = "Could not parse file: ${e.message}"
+            println(errorMessage)
+            runLater {
+                alert(Alert.AlertType.ERROR, errorMessage, e.message, owner = AlertDialog().currentWindow)
+            }
+        }
+    } else {
+        runLater {
+            alert(Alert.AlertType.ERROR, "The file ${source.toString()} does not exist.")
+        }
+    }
 }
 
 

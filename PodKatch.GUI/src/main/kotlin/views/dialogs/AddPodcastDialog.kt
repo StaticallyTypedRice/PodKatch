@@ -3,6 +3,7 @@ package podkatch.gui.views.dialogs
 import podkatch.gui.subscribe.*
 
 import tornadofx.*
+import java.io.File
 import java.net.URL
 
 class AddPodcastDialog : View("Subscribe to a Podcast") {
@@ -34,6 +35,12 @@ class AddPodcastDialog : View("Subscribe to a Podcast") {
             action {
                 val rssPathField = chooseFile("Import an RSS file",
                         filters=arrayOf(), mode=FileChooserMode.Single)
+
+                println("RSS file path: ${rssPathField.toString()}")
+
+                if (rssPathField.isNotEmpty()) {
+                    subscribeFromRss(File(rssPathField.toString()))
+                }
             }
         }
         spacer()
