@@ -27,7 +27,7 @@ class FileName(_name: String, _noExtraSpaces: Boolean = true) {
      * Removes invalid file name characters.
      *
      * @param name The string to be parsed.
-     * @param placeholder: Replace invalid file name characters with this string.
+     * @param placeholder Replace invalid file name characters with this string.
      */
     fun removeInvalidFilenameCharacters(name: String, placeholder: String = ""): String {
 
