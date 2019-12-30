@@ -1,12 +1,9 @@
-package database.tables
+package podcastengine.database.tables
 
-import database.tables.Podcasts.autoIncrement
-import database.tables.Podcasts.index
-import database.tables.Podcasts.nullable
 import org.jetbrains.exposed.sql.*
 
 object Episodes : Table() {
-    val id = Podcasts.integer("id").autoIncrement().index()                 // The episode unique ID
+    val id = integer("id").autoIncrement().index()                 // The episode unique ID
     val title = varchar("title", 1000)                               // The episode source
     val src = varchar("src", 1000)                                   // The episode GUID
     val guid = varchar("guid", 100).nullable()                       // The podcast description

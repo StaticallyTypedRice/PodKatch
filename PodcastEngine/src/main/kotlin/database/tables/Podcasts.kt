@@ -1,4 +1,4 @@
-package database.tables
+package podcastengine.database.tables
 
 import org.jetbrains.exposed.sql.*
 
