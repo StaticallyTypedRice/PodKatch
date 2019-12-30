@@ -25,6 +25,9 @@ repositories {
     maven {
         url 'https://dl.bintray.com/kittinunf/maven/'
     }
+    maven {
+        url  'https://dl.bintray.com/kotlin/exposed'
+    }
     /*flatDir {
         dirs '../PodcastEngine/build/libs'
     }*/
