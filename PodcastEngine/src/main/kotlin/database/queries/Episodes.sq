@@ -1,5 +1,5 @@
 createTable:
-CREATE TABLE podcasts (
+CREATE TABLE episodes (
     title TEXT NOT NULL,        -- The episode title
     source TEXT NOT NULL,       -- The episode source
     guid TEXT,                  -- The episode GUID
