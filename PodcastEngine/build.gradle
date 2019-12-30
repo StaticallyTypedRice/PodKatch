@@ -1,14 +1,28 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'https://dl.bintray.com/kittinunf/maven/'
+        }
+    }
+    dependencies {
+        classpath 'com.squareup.sqldelight:gradle-plugin:1.2.1'
+    }
+}
+
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.11'
 }
-
+apply plugin: 'com.squareup.sqldelight'
 
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
 repositories {
+    google()
     mavenCentral()
     maven {
         url 'https://dl.bintray.com/kittinunf/maven/'
@@ -29,6 +43,15 @@ dependencies {
 
 }
 
+sqldelight {
+    MainDatabase {
+        packageName = "podcastengine.database"
+        sourceFolders = ["src/main/kotlin/database/queries"]
+        schemaOutputDirectory = file("src/main/kotlin/database/schemas")
+    }
+    linkSqlite = false
+}
+
 test {
     useJUnitPlatform()
 }
@@ -38,4 +61,10 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+jar {
+    manifest {
+        //attributes 'Main-Class': 'podcastengine'
+    }
 }

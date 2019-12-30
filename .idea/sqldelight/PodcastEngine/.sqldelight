@@ -1,0 +1,1 @@
+{"databases":[{"packageName":"podcastengine.database","compilationUnits":[{"name":"main","sourceFolders":[{"path":"src/main/src/main/kotlin/database/queries","dependency":false}]}],"outputDirectory":"build/generated/sqldelight/code/MainDatabase","className":"MainDatabase","dependencies":[]}]}
