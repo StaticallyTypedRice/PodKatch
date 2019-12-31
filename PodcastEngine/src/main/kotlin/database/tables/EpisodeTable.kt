@@ -6,9 +6,9 @@ object EpisodeTable : Table() {
     val id = integer("id").autoIncrement().index()                          // The episode unique ID
     val podcast = integer("podcast") references PodcastTable.id             // The podcast that the episode is associated with
 
-    val title = varchar("title", 1000)                               // The episode source
-    val src = varchar("src", 1000)                                   // The episode GUID
-    val guid = varchar("guid", 100).nullable()                       // The podcast description
+    val title = varchar("title", 1000)
+    val src = varchar("src", 1000)                                   // The episode source
+    val guid = varchar("guid", 100).nullable()                       // The episode GUID
     val description = varchar("description", 100000).nullable()      // The episode description
     val type = varchar("type", 100).nullable()                       // The podcast type
 
