@@ -1,5 +1,7 @@
 package podkatch.gui.views.dialogs
 
+import podcastengine.objects.PodcastSource
+import podcastengine.objects.PodcastSourceType
 import podkatch.gui.error.simpleErrorAlert
 import podkatch.gui.subscribe.*
 
@@ -45,7 +47,7 @@ class AddPodcastDialog : View("Subscribe to a Podcast") {
                 println("RSS file path: ${rssPathField.toString()}")
 
                 if (rssPathField.isNotEmpty()) {
-                    subscribeFromRss(File(rssPathField.toString()))
+                    subscribeFromRss(File(rssPathField[0].toString()))
                 }
             }
         }
