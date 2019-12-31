@@ -27,7 +27,7 @@ fun initializeDb() {
     connectDb()
     transaction {
         addLogger(StdOutSqlLogger)
-        SchemaUtils.create(Podcasts, Episodes)
+        SchemaUtils.create(PodcastTable, EpisodeTable)
     }
 }
 
