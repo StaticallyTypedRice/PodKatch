@@ -100,13 +100,19 @@ fun parseDurationFromColonSeparatedTime(time: String): Duration {
  * Create a Podcast object from an rss document.
  *
  *  @param rss A Document object containing the RSS feed.
+ *  @param source The podcast source (if applicable).
  */
-fun createPodcastFromRss(rss: Document): Podcast {
+fun createPodcastFromRss(rss: Document, source: PodcastSource? = null): Podcast {
 
     // Get the rss channel element
     val channel: Element = rss.getElementsByTagName("channel").item(0) as Element
 
     val podcast = Podcast()
+
+    // Populate the podcast source if applicable
+    if (source !== null) {
+        podcast.source = source
+    }
 
     // Populate the podcast metadata
     podcast.title = channel.getElementsByTagName("title").item(0).textContent
@@ -126,7 +132,7 @@ fun createPodcastFromRss(rss: Document): Podcast {
     podcast.language = channel.getElementsByTagName("language").item(0).textContent
     podcast.copyright = channel.getElementsByTagName("copyright").item(0).textContent
 
-    podcast.episodes = parseEpisodesFromRss(rss)
+    podcast.episodes = createEpisodesFromRss(rss)
 
     return podcast
 }
@@ -136,7 +142,7 @@ fun createPodcastFromRss(rss: Document): Podcast {
  *
  * @param rss A Document object containing the RSS feed.
  */
-fun parseEpisodesFromRss(rss: Document): Array<Episode> {
+fun createEpisodesFromRss(rss: Document): Array<Episode> {
     val episodeRss: NodeList = rss.getElementsByTagName("item")
     var episodes = arrayOf<Episode>()
 
