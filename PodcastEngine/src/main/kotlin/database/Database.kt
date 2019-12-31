@@ -15,8 +15,9 @@ val DB_PASSWORD = ""
 /**
  * Connect to the database.
  */
-fun connectDb() {
-    Database.connect(DB_URL, driver = DB_DRIVER, user = DB_USER, password = DB_PASSWORD)
+fun connectDb(): Database {
+    return Database.connect(DB_URL, driver = DB_DRIVER, user = DB_USER, password = DB_PASSWORD)
+
 }
 
 /**
