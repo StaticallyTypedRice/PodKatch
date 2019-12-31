@@ -100,13 +100,19 @@ fun parseDurationFromColonSeparatedTime(time: String): Duration {
  * Create a Podcast object from an rss document.
  *
  *  @param rss A Document object containing the RSS feed.
+ *  @param source The podcast source (if applicable).
  */
-fun createPodcastFromRss(rss: Document): Podcast {
+fun createPodcastFromRss(rss: Document, source: PodcastSource? = null): Podcast {
 
     // Get the rss channel element
     val channel: Element = rss.getElementsByTagName("channel").item(0) as Element
 
     val podcast = Podcast()
+
+    // Populate the podcast source if applicable
+    if (source !== null) {
+        podcast.source = source
+    }
 
     // Populate the podcast metadata
     podcast.title = channel.getElementsByTagName("title").item(0).textContent
@@ -126,10 +132,22 @@ fun createPodcastFromRss(rss: Document): Podcast {
     podcast.language = channel.getElementsByTagName("language").item(0).textContent
     podcast.copyright = channel.getElementsByTagName("copyright").item(0).textContent
 
-    // Parse the podcast episodes
-    val episodes: NodeList = rss.getElementsByTagName("item")
-    for (i in 0 until episodes.length) {
-        val item: Element = episodes.item(i) as Element
+    podcast.episodes = createEpisodesFromRss(rss)
+
+    return podcast
+}
+
+/**
+ * Create a list of Episode objects from an rss document.
+ *
+ * @param rss A Document object containing the RSS feed.
+ */
+fun createEpisodesFromRss(rss: Document): Array<Episode> {
+    val episodeRss: NodeList = rss.getElementsByTagName("item")
+    var episodes = arrayOf<Episode>()
+
+    for (i in 0 until episodeRss.length) {
+        val item: Element = episodeRss.item(i) as Element
 
         val title: String = item.getElementsByTagName("title").item(0).textContent
         val file = URL(item.getElementsByTagName("enclosure").item(0).attributes.getNamedItem("url").textContent)
@@ -155,9 +173,9 @@ fun createPodcastFromRss(rss: Document): Podcast {
         episode.fileType = item.getElementsByTagName("enclosure").item(0).attributes.getNamedItem("type").textContent
 
         // Append the episode to the podcast episode list
-        podcast.episodes += episode
+        episodes += episode
 
     }
 
-    return podcast
+    return episodes
 }

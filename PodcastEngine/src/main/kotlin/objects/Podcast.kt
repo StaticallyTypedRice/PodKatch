@@ -3,6 +3,9 @@ package podcastengine.objects
 import java.net.URL
 
 class Podcast {
+    var dbId: Int? = null               // The database ID
+    var source: PodcastSource? = null   // The podcast source
+
     var title: String? = null           // The podcast title
     var link: URL? = null               // The link to the podcast page
     var description: String? = null     // The podcast description
