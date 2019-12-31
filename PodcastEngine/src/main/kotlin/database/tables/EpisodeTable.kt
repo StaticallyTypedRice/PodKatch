@@ -3,7 +3,9 @@ package podcastengine.database.tables
 import org.jetbrains.exposed.sql.*
 
 object EpisodeTable : Table() {
-    val id = integer("id").autoIncrement().index()                 // The episode unique ID
+    val id = integer("id").autoIncrement().index()                          // The episode unique ID
+    val podcast = integer("podcast") references PodcastTable.id             // The podcast that the episode is associated with
+
     val title = varchar("title", 1000)                               // The episode source
     val src = varchar("src", 1000)                                   // The episode GUID
     val guid = varchar("guid", 100).nullable()                       // The podcast description
