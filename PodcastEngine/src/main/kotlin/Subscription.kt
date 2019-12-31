@@ -15,9 +15,10 @@ import podcastengine.rss.createPodcastFromRss
  * Subscribe to a podcast given an RSS Document.
  *
  * @param rss The podcast RSS Document.
+ * @param source The podcast source (if applicable).
  */
-fun subscribe(rss: Document) {
-    val podcast = createPodcastFromRss(rss)
+fun subscribe(rss: Document, source: PodcastSource? = null) {
+    val podcast = createPodcastFromRss(rss, source)
 
     connectDb()
     initializeDb()

@@ -5,6 +5,8 @@ import java.net.URL
 import org.w3c.dom.Document
 import com.github.kittinunf.result.Result
 import javafx.scene.control.Alert
+import podcastengine.objects.PodcastSource
+import podcastengine.objects.PodcastSourceType
 import tornadofx.*
 
 import podcastengine.rss.getRemoteRss
@@ -33,7 +35,7 @@ fun subscribeFromRss(source: URL) {
                     is Result.Success -> {
                         try {
                             val rss = parseRss(result.get())
-                            subscribe(rss)
+                            subscribe(rss, PodcastSource(PodcastSourceType.FILE, source.toString()))
                         } catch (e: Exception) {
                             runLater {
                                 runLater { simpleErrorAlert("Could not parse file", e.message) }
@@ -49,7 +51,7 @@ fun subscribeFromRss(source: File) {
     if (source.exists()) {
         try {
             val rss = parseRss(source)
-            subscribe(rss)
+            subscribe(rss, PodcastSource(PodcastSourceType.FILE, source.toString()))
         } catch (e: Exception) {
             runLater { simpleErrorAlert("Could not parse file.", e.message) }
 
