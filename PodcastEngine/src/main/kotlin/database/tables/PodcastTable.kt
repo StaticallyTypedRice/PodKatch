@@ -4,7 +4,7 @@ import org.jetbrains.exposed.sql.*
 
 object PodcastTable : Table() {
     val id = integer("id").autoIncrement().index()                         // The podcast unique ID
-    val title = varchar("title", 1000)                              // The podcast title
+    val title = varchar("title", 1000).nullable()                   // The podcast title
     val src = varchar("src", 1000)                                  // The podcast source
     val link = varchar("link", 1000).nullable()                     // The link to the podcast page
     val description = varchar("description", 100000).nullable()     // The podcast description
