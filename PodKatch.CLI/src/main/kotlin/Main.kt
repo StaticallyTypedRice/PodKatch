@@ -8,6 +8,7 @@ import com.github.kittinunf.fuel.core.Request
 
 import podkatch.cli.input.*
 import podcastengine.rss.*
+import podcastengine.objects.PodcastSource
 
 fun main(args: Array<String>) {
 
@@ -41,13 +42,16 @@ fun main(args: Array<String>) {
     if (remoteRss) {
 
         val request: Request = getRemoteRss(rssUrl)
+
+        val source = PodcastSource("url", rssUrl.toString())
+
         println("Downloading RSS file...")
 
         val (rssRequest, rssResponse, rssRresult) = request.response()
         val (rssBytes, rssError) = rssRresult
         val rssDocument: Document = parseRss(rssBytes)
 
-        download(rssDocument, outputDir)
+        download(rssDocument, outputDir, source)
 
     } else {
         var fileValid: Boolean
@@ -74,9 +78,10 @@ fun main(args: Array<String>) {
  *
  * @param rss The RSS Document object.
  * @param downloadTo The path of the directory to download the file to.
+ * @param source The podcast source
  */
-private fun download(rss: Document, downloadTo: String) {
-    val podcast = createPodcastFromRss(rss)
+private fun download(rss: Document, downloadTo: String, source: PodcastSource? = null) {
+    val podcast = createPodcastFromRss(rss, source)
 
     for (episode in podcast.episodes) {
         val download = episode.download()
