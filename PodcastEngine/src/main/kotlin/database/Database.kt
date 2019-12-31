@@ -24,6 +24,7 @@ fun connectDb(): Database {
  * Create database tables.
  */
 fun initializeDb() {
+    connectDb()
     transaction {
         addLogger(StdOutSqlLogger)
         SchemaUtils.create(Podcasts, Episodes)
