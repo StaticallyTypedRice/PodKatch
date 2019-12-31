@@ -85,5 +85,6 @@ private fun download(rss: Document, downloadTo: String, source: PodcastSource? =
 
     for (episode in podcast.episodes) {
         val download = episode.download()
+        println("TODO: Download episode '${episode.title}'")
     }
 }
