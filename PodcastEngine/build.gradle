@@ -1,16 +1,3 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        maven {
-            url 'https://dl.bintray.com/kittinunf/maven/'
-        }
-        maven {
-            url  'https://dl.bintray.com/kotlin/exposed'
-        }
-    }
-}
-
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.11'
@@ -24,10 +11,10 @@ repositories {
     google()
     mavenCentral()
     maven {
-        url 'https://dl.bintray.com/kittinunf/maven/'
+        url 'https://dl.bintray.com/kotlin/exposed/'
     }
     maven {
-        url 'https://dl.bintray.com/kotlin/exposed'
+        url 'https://dl.bintray.com/kittinunf/maven/'
     }
 }
 
